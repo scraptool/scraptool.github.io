@@ -12,15 +12,15 @@
 <link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #102A36; --ink-2: #29495A; --ink-3: #5B7685;
     --paper: #F4F7F5; --white: #FFFFFF; --mist: #DCE6E1; --mist-2: #C7D5CE;
     --label: #FFCF33; --label-deep: #F2B705; --leaf: #1E7A55; --leaf-soft: #E2F2EA; --sale: #D9482B;
-    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-    --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
-    --arabic: "IBM Plex Sans Arabic", "Segoe UI", sans-serif;
+    --display: "Readex Pro", "Segoe UI", system-ui, sans-serif;
+    --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+    --arabic: "Readex Pro", "Segoe UI", sans-serif;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -31,7 +31,7 @@
   :focus-visible { outline: 3px solid var(--leaf); outline-offset: 3px; border-radius: 6px; }
   .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
   h1, h2, h3, .price, .big { font-family: var(--display); }
-  h2 { font-size: clamp(32px, 4.2vw, 50px); line-height: 1.04; letter-spacing: -1.4px; margin: 0 0 16px; font-weight: 800; }
+  h2 { font-size: clamp(30px, 3.9vw, 46px); line-height: 1.1; letter-spacing: -1px; margin: 0 0 16px; font-weight: 700; }
   h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.3px; margin: 0 0 8px; font-weight: 700; }
   p { margin: 0 0 16px; }
   .muted { color: var(--ink-3); }
@@ -59,7 +59,7 @@
   header { position: sticky; top: 0; z-index: 30; background: rgba(244, 247, 245, .9); backdrop-filter: blur(10px);
            border-bottom: 1px solid var(--mist); }
   header .wrap { display: flex; align-items: center; height: 70px; gap: 28px; }
-  .brand { display: flex; align-items: center; gap: 10px; font: 800 20px var(--display); color: var(--ink); text-decoration: none;
+  .brand { display: flex; align-items: center; gap: 10px; font: 700 20px var(--display); color: var(--ink); text-decoration: none;
            letter-spacing: -.4px; margin-right: auto; }
   .brand img { width: 36px; height: 36px; border-radius: 10px; }
   nav { display: flex; gap: 26px; }
@@ -69,7 +69,7 @@
   /* ------------------------------------------------ hero: the shelf */
   .hero { padding: 70px 0 80px; }
   .hero .wrap { display: grid; grid-template-columns: 1fr 1.02fr; gap: 56px; align-items: center; }
-  h1 { font-size: clamp(42px, 6vw, 78px); line-height: .98; letter-spacing: -2.6px; margin: 0 0 22px; font-weight: 800; }
+  h1 { font-size: clamp(40px, 5.4vw, 70px); line-height: 1.02; letter-spacing: -2px; margin: 0 0 22px; font-weight: 700; }
   .hero .intro { font-size: 19px; color: var(--ink-2); max-width: 520px; margin-bottom: 30px; }
   .actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
   .free-line { margin-top: 18px; font-size: 15px; color: var(--ink-3); }
@@ -90,7 +90,7 @@
   .lbl .nm { font-size: 12.5px; line-height: 1.25; font-weight: 600; margin-bottom: auto; padding-right: 24px; }
   .lbl .nm[lang="ar"] { padding-right: 0; padding-left: 0; margin-right: 24px; }
   .lbl .nm[lang="ar"] { text-align: right; }
-  .lbl .pr { font: 800 25px/1 var(--display); letter-spacing: -.5px; font-variant-numeric: tabular-nums; margin-top: 6px; }
+  .lbl .pr { font: 700 25px/1 var(--display); letter-spacing: -.5px; font-variant-numeric: tabular-nums; margin-top: 6px; }
   .lbl .pr small { font-size: 12px; font-weight: 700; margin-left: 2px; }
   .lbl .was { font-size: 11.5px; color: var(--sale); text-decoration: line-through; font-weight: 600; }
   .bars { height: 16px; margin-top: 6px; background: repeating-linear-gradient(90deg, var(--ink) 0 1px, transparent 1px 3px,
@@ -102,7 +102,7 @@
   .scan { position: absolute; left: 0; right: 0; height: 3px; top: 0; background: var(--sale);
           box-shadow: 0 0 18px 6px rgba(217, 72, 43, .35); opacity: 0; pointer-events: none; }
   .tally { display: flex; justify-content: space-between; align-items: center; padding: 12px 2px 12px; font-size: 14.5px; }
-  .tally b { font: 800 22px var(--display); font-variant-numeric: tabular-nums; }
+  .tally b { font: 700 22px var(--display); font-variant-numeric: tabular-nums; }
   .tally .ok { color: var(--leaf); font-weight: 700; }
 
   /* ------------------------------------------------ works with */
@@ -144,7 +144,7 @@
   .steps { list-style: none; counter-reset: s; margin: 0; padding: 0; }
   .steps li { counter-increment: s; position: relative; padding: 0 0 26px 62px; }
   .steps li::before { content: counter(s); position: absolute; left: 0; top: -4px; width: 42px; height: 42px; border-radius: 50%;
-                      background: var(--label); color: var(--ink); font: 800 19px/42px var(--display); text-align: center; }
+                      background: var(--label); color: var(--ink); font: 700 19px/42px var(--display); text-align: center; }
   .steps li:not(:last-child)::after { content: ""; position: absolute; left: 20px; top: 44px; bottom: 6px; width: 2px;
                                       background: rgba(255, 207, 51, .3); }
   .steps b { display: block; font: 700 19px var(--display); color: #fff; margin-bottom: 2px; }
@@ -190,7 +190,7 @@
   .card h3 { font-size: 24px; margin: 8px 0 0; }
   .card .tag { position: absolute; top: 12px; right: 14px; font-size: 13px; font-weight: 700; background: var(--ink); color: var(--paper);
                border-radius: 999px; padding: 2px 10px; }
-  .price { font-size: 52px; font-weight: 800; letter-spacing: -2px; line-height: 1; margin: 12px 0 4px; font-variant-numeric: tabular-nums; }
+  .price { font-size: 52px; font-weight: 700; letter-spacing: -2px; line-height: 1; margin: 12px 0 4px; font-variant-numeric: tabular-nums; }
   .price small { font: 600 16px var(--body); letter-spacing: 0; color: var(--ink-2); }
   .card ul { list-style: none; margin: 20px 0 0; padding: 18px 0 0; border-top: 2px dashed var(--mist-2); }
   .card.featured ul { border-top-color: rgba(16, 42, 54, .25); }
@@ -236,6 +236,19 @@
   .final .tagbtn { background: var(--ink); color: var(--label); }
   .final .tagbtn::before { background: var(--label); box-shadow: none; }
   .final .tagbtn:hover { background: #0A1D26; }
+
+  /* WhatsApp: talk to us (hidden until a number is set in WHATSAPP below) */
+  .wa { position: fixed; right: 22px; bottom: 22px; z-index: 40; display: flex; align-items: center; gap: 10px;
+        background: #25D366; color: #fff; text-decoration: none; font: 700 15.5px var(--body); padding: 12px 18px 12px 14px;
+        border-radius: 999px; box-shadow: 0 14px 30px -12px rgba(16, 42, 54, .55); transition: transform .15s; }
+  .wa:hover { transform: translateY(-2px); }
+  .wa svg { width: 26px; height: 26px; flex: none; }
+  .wa-line { display: inline-flex; align-items: center; gap: 9px; font: 600 16px/1 var(--body); color: #fff; background: #1FAF55;
+             text-decoration: none; padding: 15px 22px; border-radius: 12px; }
+  .wa-line:hover { background: #179446; }
+  .wa-line svg { width: 20px; height: 20px; }
+  [data-whatsapp][hidden] { display: none !important; }
+  @media (max-width: 600px) { .wa span { display: none; } .wa { padding: 13px; right: 16px; bottom: 16px; } .actions .wa-line { width: 100%; justify-content: center; } }
 
   footer { background: var(--ink); color: #B8CBC3; font-size: 15px; }
   footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding-block: 30px; }
@@ -448,6 +461,10 @@
         <p>On your own PC. Pictures, Excel files and catalogues never leave it - only your account and plan are on our server.</p></details>
       <details><summary>How do I pay?</summary>
         <p>With EVC Plus or WhatsApp, from the Plans page in the app. Your plan starts as soon as the payment is confirmed.</p></details>
+      <details data-whatsapp hidden><summary>How do I talk to you?</summary>
+        <p>Message us on WhatsApp - in English, Arabic or Somali - for help, payments or a question before you buy.
+           <a data-whatsapp-link href="#" target="_blank" rel="noopener">Open WhatsApp</a>, or email
+           <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a>.</p></details>
       <details><summary>May I download any shop?</summary>
         <p>Download what you are allowed to use - your own shop, your supplier's catalogue, or public information for your own
            research - and respect each shop's terms. Read the <a href="terms.html">terms of use</a>.</p></details>
@@ -462,11 +479,14 @@
       </div>
       <div class="actions">
         <a class="tagbtn" data-download href="#versions">Download Scraper Tool</a>
+        <a class="wa-line" data-whatsapp hidden href="#" target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2a13.2 13.2 0 0 0 6.6 1.7c7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.2-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.7-5.8C5.1 10 10 5.3 16 5.3s10.9 4.7 10.9 10.5S22 26.4 16 26.4zm6-7.8c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.8.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.6 4.9 2.1.9 2.9 1 3.9.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg>Chat on WhatsApp</a>
         <a class="line" href="mailto:osmanarap83@gmail.com">Email a question</a>
       </div>
     </div>
   </div>
 </main>
+
+<a class="wa" data-whatsapp hidden href="#" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2a13.2 13.2 0 0 0 6.6 1.7c7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.2-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.7-5.8C5.1 10 10 5.3 16 5.3s10.9 4.7 10.9 10.5S22 26.4 16 26.4zm6-7.8c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.8.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.6 4.9 2.1.9 2.9 1 3.9.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4z"/></svg><span>Chat with us</span></a>
 
 <footer>
   <div class="wrap">
@@ -494,6 +514,14 @@
     standard: ["Watch 1 shop weekly + alerts", "Excel export, catalogues", "Picture tools", "Queue up to 50 downloads"],
     pro: ["Watch 20 shops every 6 hours", "Shopify & WooCommerce export", "Every catalogue template", "Webhooks & API"]};
   document.querySelectorAll("a[data-download]").forEach(function (a) { a.href = DOWNLOAD; });
+
+  // WhatsApp: your number with the country code, digits only (e.g. "252612345678"). Empty: the buttons stay hidden.
+  var WHATSAPP = "";
+  if (/^\d{8,15}$/.test(WHATSAPP)) {
+    var chat = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Hello, I have a question about Scraper Tool.");
+    document.querySelectorAll("[data-whatsapp]").forEach(function (el) { el.hidden = false; if (el.tagName === "A") { el.href = chat; } });
+    document.querySelectorAll("a[data-whatsapp-link]").forEach(function (a) { a.href = chat; });
+  }
 
   var plansBox = document.getElementById("plan-cards");
   rpc("public_plans").then(function (plans) {
