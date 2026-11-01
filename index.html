@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Scraper Tool</title>
-<meta name="description" content="Scraper Tool for Windows: download every product of almost any online shop - pictures, prices, stock and barcodes - read protected shops in your browser, queue downloads, watch competitors' prices, and export to Excel, Shopify and WhatsApp catalogues. English, Arabic and Somali.">
+<meta name="description" content="Scraper Tool for Windows: download every product of any online shop - pictures, prices, stock and barcodes - read protected shops in your browser, queue downloads, watch competitors' prices, and export to Excel, your shop and WhatsApp catalogues.">
 <meta property="og:title" content="Scraper Tool - every product of any shop, on your PC">
-<meta property="og:description" content="Pictures, prices, stock and barcodes from almost any online shop. Free to start.">
+<meta property="og:description" content="Pictures, prices, stock and barcodes from any online shop. Free to start.">
 <meta property="og:image" content="logo.png">
 <meta name="theme-color" content="#102A36">
 <link rel="icon" href="logo.png">
@@ -108,7 +108,7 @@
   /* ------------------------------------------------ works with */
   .works { border-block: 1px solid var(--mist); background: var(--white); }
   .works .wrap { display: flex; align-items: center; gap: 36px; padding-block: 22px; flex-wrap: wrap; }
-  .works p { margin: 0; font-weight: 600; color: var(--ink-3); font-size: 15px; }
+  .works p { margin: 0; }
   .works ul { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 30px; margin: 0; padding: 0;
               font: 700 19px var(--display); color: var(--ink-2); letter-spacing: -.3px; }
 
@@ -304,20 +304,19 @@
           <a class="line" href="#what">See what you get</a>
         </div>
         <p class="free-line"><b>Free to start:</b> 200 credits every week, no card. Every Pro feature free for 7 days.</p>
-        <div class="speaks">Speaks <span>English</span><span lang="ar" dir="rtl">العربية</span><span>Soomaali</span></div>
       </div>
 
       <div class="shelf" aria-label="A shop being downloaded: each price label is saved in turn">
         <div class="shelf-head"><b>Dairy &amp; Eggs</b><span id="hero-version">Scraper Tool 5.0</span></div>
         <div class="row">
-          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Fresh milk full fat 2 L</span><span class="pr">12.50<small>AED</small></span><span class="bars"></span></div>
-          <div class="lbl"><span class="saved">&#10003;</span><span class="nm" lang="ar" dir="rtl">لبن زبادي طازج ١ كجم</span><span class="was">9.75</span><span class="pr">7.95<small>AED</small></span><span class="bars"></span></div>
-          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Free range eggs, 30 pieces</span><span class="pr">24.00<small>AED</small></span><span class="bars"></span></div>
+          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Fresh milk full fat 2 L</span><span class="pr">$3.40</span><span class="bars"></span></div>
+          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Fresh yoghurt 1 kg</span><span class="was">$2.65</span><span class="pr">$2.15</span><span class="bars"></span></div>
+          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Free range eggs, 30 pieces</span><span class="pr">$6.50</span><span class="bars"></span></div>
         </div>
         <div class="row">
-          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Cheddar cheese slices 400 g</span><span class="was">18.50</span><span class="pr">14.25<small>AED</small></span><span class="bars"></span></div>
-          <div class="lbl"><span class="saved">&#10003;</span><span class="nm" lang="ar" dir="rtl">زبدة بقرية غير مملحة</span><span class="pr">16.90<small>AED</small></span><span class="bars"></span></div>
-          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Greek yoghurt honey 4 x 110 g</span><span class="pr">11.00<small>AED</small></span><span class="bars"></span></div>
+          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Cheddar cheese slices 400 g</span><span class="was">$5.05</span><span class="pr">$3.90</span><span class="bars"></span></div>
+          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Unsalted butter 200 g</span><span class="pr">$4.60</span><span class="bars"></span></div>
+          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Greek yoghurt honey 4 x 110 g</span><span class="pr">$3.00</span><span class="bars"></span></div>
         </div>
         <div class="tally"><span><b id="count">0</b> of 1,248 products saved</span><span class="ok">products.xlsx</span></div>
         <div class="scan" id="scan"></div>
@@ -327,8 +326,7 @@
 
   <div class="works">
     <div class="wrap">
-      <p>Works with almost every online shop</p>
-      <ul><li>Shopify</li><li>WooCommerce</li><li>Magento</li><li>Salla</li><li>Zid</li><li>Wix</li><li>BigCommerce</li><li>and shops made by hand</li></ul>
+      <ul><li>Works with all online shops</li></ul>
     </div>
   </div>
 
@@ -349,12 +347,12 @@
         </ul>
         <div class="receipt" aria-label="Example of one download">
           <h3>Download receipt</h3>
-          <div class="from">giordano.ae - whole shop</div>
+          <div class="from">yourshop.com - whole shop</div>
           <dl>
             <div><dt>Products</dt><dd>1,248</dd></div>
             <div><dt>Pictures</dt><dd>3,912</dd></div>
             <div><dt>Barcodes</dt><dd>1,201</dd></div>
-            <div><dt>Prices</dt><dd>AED</dd></div>
+            <div><dt>Prices</dt><dd>$</dd></div>
             <div><dt>Excel list</dt><dd>products.xlsx</dd></div>
             <div><dt>Catalogue</dt><dd>catalogue.pdf</dd></div>
             <div class="total"><dt>Time</dt><dd>6 min</dd></div>
@@ -370,9 +368,8 @@
     <div class="wrap">
       <div>
         <h2>Shops that block programs? Read them in your own browser.</h2>
-        <p class="lead">Big hypermarkets like LuLu and Carrefour only open for real visitors. The Scraper Tool button
+        <p class="lead">Some big hypermarkets and marketplaces only open for real visitors. The Scraper Tool button
           in Chrome reads them as you see them - category by category - and hands everything to the app.</p>
-        <div class="chips"><span>LuLu</span><span>Carrefour</span><span>Spinneys</span><span>any shop in your browser</span></div>
       </div>
       <ol class="steps">
         <li><b>Open the shop in Chrome</b><span>Go to its home page, as you always do.</span></li>
@@ -387,12 +384,12 @@
     <div class="wrap two">
       <div>
         <h2>Ask for it the way you would ask a person.</h2>
-        <p class="muted" style="font-size:18.5px">Type what you want in English, Arabic or Somali. The assistant picks the
-          categories, the pictures and the details, then starts or queues the download. It runs on your PC, free.</p>
+        <p class="muted" style="font-size:18.5px">Type what you want in plain words. The assistant picks the categories,
+          the pictures and the details, then starts or queues the download. It runs on your PC, free.</p>
         <ul class="ask-list">
           <li><q>only shirts and jeans</q><span>picks the categories</span></li>
           <li><q>2 pictures each, with prices</q><span>sets what to save</span></li>
-          <li><q lang="ar">ابدأ</q> &nbsp;<q>bilow</q> &nbsp;<q>queue</q><span>starts or waits its turn</span></li>
+          <li><q>start</q> &nbsp;<q>queue</q><span>starts now or waits its turn</span></li>
         </ul>
       </div>
       <div class="chat" aria-hidden="true">
@@ -408,9 +405,9 @@
         <div class="screen">
           <div class="clock">9:41</div>
           <div class="day">Saturday</div>
-          <div class="note-card"><b>Scraper Tool <em>now</em></b>Price drop: Nike Air Max 90 <span class="down">now 389 AED</span>, was 459</div>
-          <div class="note-card"><b>Scraper Tool <em>12 min</em></b>Back in stock: Samsung Galaxy A55, 128 GB</div>
-          <div class="note-card"><b>Scraper Tool <em>1 h</em></b>Download finished: shop.com - 2,310 products</div>
+          <div class="note-card"><b>Scraper Tool <em>now</em></b>Price drop: Running shoes, size 42 <span class="down">now $106</span>, was $125</div>
+          <div class="note-card"><b>Scraper Tool <em>12 min</em></b>Back in stock: Smartphone 128 GB, black</div>
+          <div class="note-card"><b>Scraper Tool <em>1 h</em></b>Download finished: yourshop.com - 2,310 products</div>
         </div>
       </div>
       <div>
@@ -431,7 +428,7 @@
       </div>
       <div id="plan-cards">
         <div class="card"><h3>Free</h3><div class="price">$0</div>
-          <ul><li>200 credits a week</li><li>1 picture per product + product list</li><li>English, Arabic, Somali</li><li>7-day Pro trial</li></ul></div>
+          <ul><li>200 credits a week</li><li>1 picture per product + product list</li><li>7-day Pro trial</li></ul></div>
         <div class="card"><h3>Standard</h3><div class="price">$4.99 <small>a month</small></div>
           <ul><li>5,000 credits a week</li><li>Watch 1 shop weekly + alerts</li><li>Excel export, catalogues</li><li>Yearly: $49.90</li></ul></div>
         <div class="card featured"><span class="tag">Everything</span><h3>Pro</h3><div class="price">$8.99 <small>a month</small></div>
@@ -453,8 +450,8 @@
     <div class="wrap faq">
       <div class="head"><h2>Questions people ask.</h2></div>
       <details><summary>Which shops does it work with?</summary>
-        <p>Almost every online shop. Shopify and WooCommerce shops are read directly, most other shops through the product data
-           they publish for Google, and shops that block programs are read in your own Chrome with the browser button.</p></details>
+        <p>All online shops. Most are read directly through the product data they publish for search engines, and shops
+           that block programs are read in your own Chrome with the browser button.</p></details>
       <details><summary>Is it really free?</summary>
         <p>Yes. The Free plan gives you 200 credits every week without a card, and new accounts can use every Pro feature free for 7 days.</p></details>
       <details><summary>Where are my files kept?</summary>
@@ -462,7 +459,7 @@
       <details><summary>How do I pay?</summary>
         <p>With EVC Plus or WhatsApp, from the Plans page in the app. Your plan starts as soon as the payment is confirmed.</p></details>
       <details data-whatsapp hidden><summary>How do I talk to you?</summary>
-        <p>Message us on WhatsApp - in English, Arabic or Somali - for help, payments or a question before you buy.
+        <p>Message us on WhatsApp for help, payments or a question before you buy.
            <a data-whatsapp-link href="#" target="_blank" rel="noopener">Open WhatsApp</a>, or email
            <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a>.</p></details>
       <details><summary>May I download any shop?</summary>
@@ -510,7 +507,7 @@
     return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]; }); }
   function money(n) { return "$" + Number(n).toFixed(2); }
   var FEATURES = {
-    free: ["1 picture per product + product list", "English, Arabic, Somali", "7-day Pro trial"],
+    free: ["1 picture per product + product list", "7-day Pro trial"],
     standard: ["Watch 1 shop weekly + alerts", "Excel export, catalogues", "Picture tools", "Queue up to 50 downloads"],
     pro: ["Watch 20 shops every 6 hours", "Shopify & WooCommerce export", "Every catalogue template", "Webhooks & API"]};
   document.querySelectorAll("a[data-download]").forEach(function (a) { a.href = DOWNLOAD; });
@@ -601,15 +598,14 @@
   // the assistant: a request typed in, and what was understood
   (function () {
     var asks = [
-      ["giordano.ae, only shirts and jeans, 2 pictures each, with prices, start", ["giordano.ae", "Shirts, Jeans", "2 pictures each", "+ prices", "starts now"]],
-      ["نزّل الموقع كامل shop.com بدون صور", ["shop.com", "whole shop", "no pictures", "product list"]],
-      ["shop1.com and shop2.com, all pictures, queue", ["shop1.com", "shop2.com", "all pictures", "into the queue"]],
-      ["soo deji giordano.ae dhammaan sawirada, bilow", ["giordano.ae", "all pictures", "starts now"]]];
+      ["yourshop.com, only shirts and jeans, 2 pictures each, with prices, start", ["yourshop.com", "Shirts, Jeans", "2 pictures each", "+ prices", "starts now"]],
+      ["supplier.com whole shop, no pictures", ["supplier.com", "whole shop", "no pictures", "product list"]],
+      ["shop-one.com and shop-two.com, all pictures, queue", ["shop-one.com", "shop-two.com", "all pictures", "into the queue"]],
+      ["mystore.com only kids, 1 picture, with stock, start", ["mystore.com", "Kids", "1 picture each", "+ stock", "starts now"]]];
     var typed = document.getElementById("typed"), reply = document.getElementById("reply"), got = document.getElementById("got");
     function show(items) { got.innerHTML = items.map(function (t) { return "<span>" + esc(t) + "</span>"; }).join(""); reply.hidden = false; }
     function play(n) {
       var a = asks[n % asks.length], i = 0;
-      typed.setAttribute("dir", /[؀-ۿ]/.test(a[0]) ? "rtl" : "ltr");
       reply.hidden = true;
       if (still) { typed.textContent = a[0]; return show(a[1]); }
       (function type() {
