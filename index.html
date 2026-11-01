@@ -4,68 +4,267 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Scraper Tool</title>
-<meta name="description" content="Scraper Tool for Windows: download product pictures and details from online shops, watch competitors' prices, export to Shopify and WooCommerce, and make PDF catalogues. In English, Arabic and Somali.">
+<meta name="description" content="Scraper Tool for Windows: download every product of almost any online shop - pictures, prices, stock and barcodes - read protected shops in your browser, queue downloads, watch competitors' prices, and export to Excel, Shopify and WhatsApp catalogues. English, Arabic and Somali.">
+<meta property="og:title" content="Scraper Tool - every product of any shop, on your PC">
+<meta property="og:description" content="Pictures, prices, stock and barcodes from almost any online shop. Free to start.">
+<meta property="og:image" content="logo.png">
+<meta name="theme-color" content="#102A36">
 <link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --deep: #020617; --surface: #0F172A; --raised: #1E293B; --line: #1E293B;
-    --text: #E2E8F0; --muted: #94A3B8; --blue: #3B82F6; --cyan: #06B6D4; --green: #22C55E;
+    --ink: #102A36; --ink-2: #29495A; --ink-3: #5B7685;
+    --paper: #F4F7F5; --white: #FFFFFF; --mist: #DCE6E1; --mist-2: #C7D5CE;
+    --label: #FFCF33; --label-deep: #F2B705; --leaf: #1E7A55; --leaf-soft: #E2F2EA; --sale: #D9482B;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+    --arabic: "IBM Plex Sans Arabic", "Segoe UI", sans-serif;
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--deep); color: var(--text); font: 16px/1.6 "Segoe UI", Arial, sans-serif; }
-  a { color: var(--blue); }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
-  header { border-bottom: 1px solid var(--line); }
-  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
-  .brand img { width: 36px; height: 36px; border-radius: 8px; }
-  nav a { color: var(--muted); text-decoration: none; margin-left: 22px; font-size: 15px; }
-  nav a:hover { color: var(--text); }
-  .hero { padding: 72px 0 56px; }
-  .hero h1 { font-size: 42px; line-height: 1.15; margin: 0 0 16px; max-width: 680px; }
-  .hero p { color: var(--muted); font-size: 18px; max-width: 620px; margin: 0 0 28px; }
-  .button { display: inline-block; background: var(--blue); color: #fff; text-decoration: none; font-weight: 600;
-            padding: 12px 22px; border-radius: 10px; }
-  .button.plain { background: var(--raised); margin-left: 10px; }
-  h2 { font-size: 26px; margin: 0 0 18px; }
-  section { padding: 40px 0; border-top: 1px solid var(--line); }
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
-  .card h3 { margin: 0 0 8px; font-size: 18px; }
-  .card p, .card li { color: var(--muted); margin: 0; font-size: 15px; }
-  .card ul { margin: 0; padding-left: 18px; }
-  .price { font-size: 30px; font-weight: 700; color: var(--text); margin: 6px 0 2px; }
-  .price small { font-size: 15px; font-weight: 400; color: var(--muted); }
-  .tag { display: inline-block; font-size: 12px; font-weight: 600; color: var(--cyan); border: 1px solid var(--cyan);
-         border-radius: 6px; padding: 1px 8px; margin-bottom: 8px; }
-  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  .grid.two { grid-template-columns: repeat(2, 1fr); }
-  .grid.four { grid-template-columns: repeat(4, 1fr); }
-  .lead { color: var(--muted); font-size: 18px; max-width: 640px; margin: 0 0 28px; }
-  .icon { font-size: 26px; margin-bottom: 8px; }
-  .step { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
-  .step b { flex: none; width: 30px; height: 30px; border-radius: 15px; background: var(--blue); color: #fff;
-            display: grid; place-items: center; font-size: 14px; }
-  .note { color: var(--muted); font-size: 14px; margin-top: 12px; }
-  .gift { background: linear-gradient(135deg, #1E3A8A, #0F172A); border: 1px solid #1D4ED8; border-radius: 16px;
-          padding: 28px; }
-  .code { font: 700 34px/1.2 Consolas, monospace; color: #fff; letter-spacing: 2px; margin: 10px 0 6px; }
-  .version { margin-bottom: 12px; }
-  .vhead { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-  .vhead h3 { margin: 0; }
-  .vhead .date { color: var(--muted); font-size: 14px; margin-left: auto; }
-  .button.small { padding: 6px 14px; font-size: 14px; margin-left: 10px; }
-  .version ul { margin: 10px 0 0; }
-  .grid.three { grid-template-columns: repeat(3, 1fr); }
-  @media (max-width: 760px) {
-    .grid.three { grid-template-columns: 1fr; }
-    .grid.two, .grid.four { grid-template-columns: 1fr; }
-    .grid { grid-template-columns: 1fr; }
-    .hero { padding: 44px 0 36px; }
-    .hero h1 { font-size: 32px; }
-    nav a { margin-left: 14px; }
-    .button.plain { margin: 10px 0 0; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--body);
+         -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  [lang="ar"] { font-family: var(--arabic); }
+  a { color: var(--leaf); text-underline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--leaf); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3, .price, .big { font-family: var(--display); }
+  h2 { font-size: clamp(32px, 4.2vw, 50px); line-height: 1.04; letter-spacing: -1.4px; margin: 0 0 16px; font-weight: 800; }
+  h3 { font-size: 22px; line-height: 1.2; letter-spacing: -.3px; margin: 0 0 8px; font-weight: 700; }
+  p { margin: 0 0 16px; }
+  .muted { color: var(--ink-3); }
+
+  /* ------------------------------------------------ buttons: the price tag and the outline */
+  .tagbtn { position: relative; display: inline-flex; align-items: center; gap: 10px; font: 700 16px/1 var(--body);
+            color: var(--ink); background: var(--label); text-decoration: none; padding: 16px 26px 16px 40px;
+            border-radius: 6px 14px 14px 6px; clip-path: polygon(16px 0, 100% 0, 100% 100%, 16px 100%, 0 50%);
+            transition: background .15s, transform .15s; cursor: pointer; border: 0; }
+  .tagbtn::before { content: ""; position: absolute; left: 18px; top: 50%; width: 9px; height: 9px; margin-top: -4.5px;
+                    border-radius: 50%; background: var(--paper); box-shadow: inset 0 0 0 2px rgba(16, 42, 54, .25); }
+  .tagbtn:hover { background: var(--label-deep); transform: translateX(2px); }
+  .tagbtn:active { transform: translateX(0) scale(.98); }
+  .tagbtn.small { font-size: 14.5px; padding: 11px 18px 11px 32px; clip-path: polygon(12px 0, 100% 0, 100% 100%, 12px 100%, 0 50%); }
+  .tagbtn.small::before { left: 13px; width: 7px; height: 7px; margin-top: -3.5px; }
+  .line { display: inline-flex; align-items: center; font: 600 16px/1 var(--body); color: var(--ink); text-decoration: none;
+          padding: 15px 22px; border-radius: 12px; border: 2px solid var(--ink); background: transparent;
+          transition: background .15s, color .15s; }
+  .line:hover { background: var(--ink); color: var(--paper); }
+  .line.on-dark { color: var(--paper); border-color: rgba(244, 247, 245, .5); }
+  .line.on-dark:hover { background: var(--paper); color: var(--ink); }
+  .line.small { font-size: 14.5px; padding: 9px 16px; border-width: 1.5px; border-radius: 10px; }
+
+  /* ------------------------------------------------ header */
+  header { position: sticky; top: 0; z-index: 30; background: rgba(244, 247, 245, .9); backdrop-filter: blur(10px);
+           border-bottom: 1px solid var(--mist); }
+  header .wrap { display: flex; align-items: center; height: 70px; gap: 28px; }
+  .brand { display: flex; align-items: center; gap: 10px; font: 800 20px var(--display); color: var(--ink); text-decoration: none;
+           letter-spacing: -.4px; margin-right: auto; }
+  .brand img { width: 36px; height: 36px; border-radius: 10px; }
+  nav { display: flex; gap: 26px; }
+  nav a { color: var(--ink-2); text-decoration: none; font-weight: 500; font-size: 15.5px; }
+  nav a:hover { color: var(--ink); text-decoration: underline; text-decoration-thickness: 2px; }
+
+  /* ------------------------------------------------ hero: the shelf */
+  .hero { padding: 70px 0 80px; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 1.02fr; gap: 56px; align-items: center; }
+  h1 { font-size: clamp(42px, 6vw, 78px); line-height: .98; letter-spacing: -2.6px; margin: 0 0 22px; font-weight: 800; }
+  .hero .intro { font-size: 19px; color: var(--ink-2); max-width: 520px; margin-bottom: 30px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .free-line { margin-top: 18px; font-size: 15px; color: var(--ink-3); }
+  .free-line b { color: var(--leaf); }
+  .speaks { display: flex; gap: 18px; margin-top: 28px; font-size: 15px; color: var(--ink-3); flex-wrap: wrap; }
+  .speaks span { font-weight: 600; color: var(--ink); }
+
+  .shelf { position: relative; background: var(--white); border-radius: 22px; padding: 22px 22px 8px;
+           box-shadow: 0 1px 0 var(--mist), 0 30px 60px -36px rgba(16, 42, 54, .45); border: 1px solid var(--mist); overflow: hidden; }
+  .shelf-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; gap: 10px; }
+  .shelf-head b { font: 700 15px var(--body); }
+  .shelf-head span { font-size: 14px; color: var(--ink-3); }
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding-bottom: 14px; margin-bottom: 14px;
+         border-bottom: 6px solid #E7ECE9; }
+  .row:last-child { margin-bottom: 0; }
+  .lbl { position: relative; background: var(--label); border-radius: 4px; padding: 10px 11px 9px; min-height: 108px;
+         display: flex; flex-direction: column; transition: background .3s; }
+  .lbl .nm { font-size: 12.5px; line-height: 1.25; font-weight: 600; margin-bottom: auto; padding-right: 24px; }
+  .lbl .nm[lang="ar"] { padding-right: 0; padding-left: 0; margin-right: 24px; }
+  .lbl .nm[lang="ar"] { text-align: right; }
+  .lbl .pr { font: 800 25px/1 var(--display); letter-spacing: -.5px; font-variant-numeric: tabular-nums; margin-top: 6px; }
+  .lbl .pr small { font-size: 12px; font-weight: 700; margin-left: 2px; }
+  .lbl .was { font-size: 11.5px; color: var(--sale); text-decoration: line-through; font-weight: 600; }
+  .bars { height: 16px; margin-top: 6px; background: repeating-linear-gradient(90deg, var(--ink) 0 1px, transparent 1px 3px,
+          var(--ink) 3px 5px, transparent 5px 6px, var(--ink) 6px 7px, transparent 7px 10px); opacity: .8; }
+  .lbl .saved { position: absolute; top: 7px; right: 7px; width: 20px; height: 20px; border-radius: 50%; background: var(--leaf);
+                color: #fff; font-size: 12px; display: grid; place-items: center; transform: scale(0); transition: transform .25s; }
+  .lbl.done { background: #FFE27A; }
+  .lbl.done .saved { transform: scale(1); }
+  .scan { position: absolute; left: 0; right: 0; height: 3px; top: 0; background: var(--sale);
+          box-shadow: 0 0 18px 6px rgba(217, 72, 43, .35); opacity: 0; pointer-events: none; }
+  .tally { display: flex; justify-content: space-between; align-items: center; padding: 12px 2px 12px; font-size: 14.5px; }
+  .tally b { font: 800 22px var(--display); font-variant-numeric: tabular-nums; }
+  .tally .ok { color: var(--leaf); font-weight: 700; }
+
+  /* ------------------------------------------------ works with */
+  .works { border-block: 1px solid var(--mist); background: var(--white); }
+  .works .wrap { display: flex; align-items: center; gap: 36px; padding-block: 22px; flex-wrap: wrap; }
+  .works p { margin: 0; font-weight: 600; color: var(--ink-3); font-size: 15px; }
+  .works ul { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 30px; margin: 0; padding: 0;
+              font: 700 19px var(--display); color: var(--ink-2); letter-spacing: -.3px; }
+
+  section { padding: 110px 0 0; }
+  .head { max-width: 640px; margin-bottom: 48px; }
+  .head p { font-size: 18.5px; color: var(--ink-2); }
+
+  /* ------------------------------------------------ one address -> the receipt */
+  .split { display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: start; }
+  .gets { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 34px 40px; }
+  .gets li { border-top: 3px solid var(--ink); padding-top: 16px; }
+  .gets p { color: var(--ink-2); font-size: 16px; margin: 0; }
+  .receipt { background: var(--white); padding: 26px 26px 34px; font-size: 15px; position: relative;
+             box-shadow: 0 24px 50px -32px rgba(16, 42, 54, .5); transform: rotate(1.4deg);
+             -webkit-mask: radial-gradient(circle 7px at 50% 100%, #0000 98%, #000) 50% 100% / 18px 100% repeat-x; }
+  .receipt h3 { font-size: 20px; text-align: center; margin-bottom: 2px; }
+  .receipt .from { text-align: center; color: var(--ink-3); font-size: 14px; margin-bottom: 16px; }
+  .receipt dl { margin: 0; border-top: 2px dashed var(--mist-2); padding-top: 12px; }
+  .receipt dl div { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; }
+  .receipt dt { color: var(--ink-2); } .receipt dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .receipt .total { border-top: 2px dashed var(--mist-2); margin-top: 10px; padding-top: 12px; font-size: 17px; }
+  .receipt .total dd { color: var(--leaf); }
+  .receipt .bars { height: 40px; margin: 18px auto 4px; width: 70%; }
+  .receipt .thanks { text-align: center; font-size: 13.5px; color: var(--ink-3); }
+
+  /* ------------------------------------------------ protected shops: the dark band */
+  .band { margin-top: 110px; background: var(--ink); color: var(--paper); padding: 96px 0; position: relative; overflow: hidden; }
+  .band::after { content: ""; position: absolute; right: -120px; top: -120px; width: 420px; height: 420px; border-radius: 50%;
+                 border: 70px solid rgba(255, 207, 51, .08); }
+  .band .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .band h2 { color: #fff; }
+  .band .lead { font-size: 18.5px; color: #C9D8D2; max-width: 500px; }
+  .steps { list-style: none; counter-reset: s; margin: 0; padding: 0; }
+  .steps li { counter-increment: s; position: relative; padding: 0 0 26px 62px; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: -4px; width: 42px; height: 42px; border-radius: 50%;
+                      background: var(--label); color: var(--ink); font: 800 19px/42px var(--display); text-align: center; }
+  .steps li:not(:last-child)::after { content: ""; position: absolute; left: 20px; top: 44px; bottom: 6px; width: 2px;
+                                      background: rgba(255, 207, 51, .3); }
+  .steps b { display: block; font: 700 19px var(--display); color: #fff; margin-bottom: 2px; }
+  .steps span { color: #B8CBC3; font-size: 16px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .chips span { border: 1.5px solid rgba(244, 247, 245, .3); border-radius: 999px; padding: 6px 14px; font-size: 14.5px; }
+
+  /* ------------------------------------------------ assistant: a chat */
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .chat { background: #E6EFEA; border-radius: 24px; padding: 26px; min-height: 330px; display: flex; flex-direction: column; gap: 12px; }
+  .bubble { max-width: 86%; padding: 12px 16px; border-radius: 18px; font-size: 16px; line-height: 1.45; }
+  .bubble.me { align-self: flex-end; background: var(--ink); color: #fff; border-bottom-right-radius: 6px; min-height: 48px; }
+  .bubble.me .caret { display: inline-block; width: 2px; height: 1em; background: var(--label); vertical-align: -2px; margin-left: 2px;
+                      animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .bubble.app { align-self: flex-start; background: var(--white); border-bottom-left-radius: 6px; box-shadow: 0 1px 0 var(--mist-2); }
+  .bubble.app small { display: block; color: var(--ink-3); font-size: 13px; margin-bottom: 6px; font-weight: 600; }
+  .bubble.app .got { display: flex; flex-wrap: wrap; gap: 6px; }
+  .bubble.app .got span { background: var(--leaf-soft); color: var(--leaf); font-weight: 600; font-size: 14px; border-radius: 8px; padding: 3px 9px; }
+  .ask-list { list-style: none; padding: 0; margin: 26px 0 0; }
+  .ask-list li { padding: 14px 0; border-top: 1px solid var(--mist-2); display: flex; gap: 14px; align-items: baseline; }
+  .ask-list q { font-weight: 600; quotes: "“" "”"; }
+  .ask-list span { color: var(--ink-3); font-size: 15px; margin-left: auto; text-align: right; }
+
+  /* ------------------------------------------------ watch: the phone notification */
+  .phone { justify-self: center; width: 300px; background: var(--ink); border-radius: 40px; padding: 16px; box-shadow: 0 40px 60px -40px rgba(16,42,54,.8); }
+  .screen { background: linear-gradient(170deg, #2C5C70, #173947); border-radius: 28px; padding: 54px 12px 70px; min-height: 420px; }
+  .clock { text-align: center; color: #fff; font: 700 54px/1 var(--display); letter-spacing: -1px; margin-bottom: 4px; }
+  .day { text-align: center; color: #CFE0D8; font-size: 14px; margin-bottom: 28px; }
+  .note-card { background: rgba(255, 255, 255, .92); border-radius: 18px; padding: 12px 14px; margin-bottom: 10px; font-size: 14px; line-height: 1.35; }
+  .note-card b { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 3px; }
+  .note-card b em { font-style: normal; font-weight: 500; color: var(--ink-3); }
+  .note-card .down { color: var(--leaf); font-weight: 700; }
+
+  /* ------------------------------------------------ plans: hanging price tags */
+  #plan-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: start; padding-top: 18px; }
+  .card { position: relative; background: var(--white); border: 2px solid var(--ink); border-radius: 10px 10px 18px 18px;
+          padding: 40px 28px 28px; }
+  .card::before { content: ""; position: absolute; top: 14px; left: 50%; width: 14px; height: 14px; margin-left: -7px;
+                  border-radius: 50%; border: 2px solid var(--ink); background: var(--paper); }
+  .card::after { content: ""; position: absolute; top: -20px; left: 50%; width: 2px; height: 34px; background: var(--ink); }
+  .card.featured { background: var(--label); }
+  .card h3 { font-size: 24px; margin: 8px 0 0; }
+  .card .tag { position: absolute; top: 12px; right: 14px; font-size: 13px; font-weight: 700; background: var(--ink); color: var(--paper);
+               border-radius: 999px; padding: 2px 10px; }
+  .price { font-size: 52px; font-weight: 800; letter-spacing: -2px; line-height: 1; margin: 12px 0 4px; font-variant-numeric: tabular-nums; }
+  .price small { font: 600 16px var(--body); letter-spacing: 0; color: var(--ink-2); }
+  .card ul { list-style: none; margin: 20px 0 0; padding: 18px 0 0; border-top: 2px dashed var(--mist-2); }
+  .card.featured ul { border-top-color: rgba(16, 42, 54, .25); }
+  .card li { padding: 5px 0 5px 26px; position: relative; font-size: 15.5px; }
+  .card li::before { content: ""; position: absolute; left: 2px; top: 13px; width: 12px; height: 7px; border-left: 2.5px solid var(--leaf);
+                     border-bottom: 2.5px solid var(--leaf); transform: rotate(-45deg); }
+  .card.featured li::before { border-color: var(--ink); }
+  .paynote { margin-top: 28px; color: var(--ink-2); font-size: 16px; }
+
+  /* ------------------------------------------------ versions: a timeline */
+  #version-list { border-left: 3px solid var(--ink); margin-left: 8px; }
+  .version { position: relative; padding: 0 0 34px 34px; }
+  .version::before { content: ""; position: absolute; left: -10px; top: 6px; width: 17px; height: 17px; border-radius: 50%;
+                     background: var(--paper); border: 3px solid var(--ink); }
+  .version:first-child::before { background: var(--label); }
+  .vhead { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .vhead h3 { margin: 0; font-size: 24px; }
+  .vhead .date { color: var(--ink-3); font-size: 15px; }
+  .vhead .pill { font-size: 13px; font-weight: 700; border-radius: 999px; padding: 2px 10px; background: var(--leaf-soft); color: var(--leaf); }
+  .vhead .pill.req { background: #FBE3DC; color: var(--sale); }
+  .vhead a { margin-left: auto; }
+  .version ul { margin: 10px 0 0; padding-left: 20px; color: var(--ink-2); max-width: 760px; }
+  .version.hidden { display: none; }
+  .note { color: var(--ink-3); }
+
+  /* ------------------------------------------------ questions */
+  .faq { max-width: 820px; }
+  details { border-top: 2px solid var(--ink); }
+  details:last-child { border-bottom: 2px solid var(--ink); }
+  summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; align-items: center;
+            padding: 22px 2px; font: 700 21px var(--display); letter-spacing: -.3px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: ""; flex: none; width: 14px; height: 14px; border-right: 3px solid var(--ink); border-bottom: 3px solid var(--ink);
+                   transform: rotate(45deg); transition: transform .2s; margin-right: 6px; }
+  details[open] summary::after { transform: rotate(-135deg); }
+  details p { color: var(--ink-2); padding: 0 2px 22px; margin: 0; max-width: 680px; }
+
+  /* ------------------------------------------------ the last call */
+  .final { margin-top: 120px; background: var(--label); }
+  .final .wrap { display: flex; align-items: center; justify-content: space-between; gap: 36px; padding-block: 70px; flex-wrap: wrap; }
+  .final h2 { margin: 0 0 8px; max-width: 620px; }
+  .final p { margin: 0; color: var(--ink-2); }
+  .final .tagbtn { background: var(--ink); color: var(--label); }
+  .final .tagbtn::before { background: var(--label); box-shadow: none; }
+  .final .tagbtn:hover { background: #0A1D26; }
+
+  footer { background: var(--ink); color: #B8CBC3; font-size: 15px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding-block: 30px; }
+  footer a { color: #E6EFEA; }
+
+  .hero .wrap > *, .split > *, .two > *, .band .wrap > *, .final .wrap > * { min-width: 0; }
+  @media (max-width: 980px) {
+    .hero .wrap, .split, .band .wrap, .two { grid-template-columns: 1fr; gap: 44px; }
+    .receipt { max-width: 420px; }
+    #plan-cards { grid-template-columns: 1fr; max-width: 460px; gap: 46px; }
+    nav { display: none; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 18px; }
+    header .tagbtn { display: none; }
+    .actions .tagbtn, .actions .line { width: 100%; justify-content: center; }
+    .hero { padding: 40px 0 56px; }
+    h1 { letter-spacing: -1.6px; }
+    .row { grid-template-columns: repeat(2, 1fr); }
+    .row .lbl:nth-child(3) { display: none; }
+    .gets { grid-template-columns: 1fr; gap: 26px; }
+    section { padding-top: 80px; }
+    .band { margin-top: 80px; padding: 70px 0; }
+    .ask-list li { flex-direction: column; gap: 2px; } .ask-list span { margin-left: 0; text-align: left; }
+    .vhead a { margin-left: 0; }
+    .phone { width: 270px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   }
 </style>
 </head>
@@ -73,83 +272,210 @@
 <header>
   <div class="wrap">
     <a class="brand" href="./"><img src="logo.png" alt="">Scraper Tool</a>
-    <nav><a href="#features">Features</a><a href="#plans">Plans</a><a href="#versions">Versions</a></nav>
+    <nav aria-label="Page">
+      <a href="#what">What you get</a><a href="#protected">Protected shops</a><a href="#assistant">Assistant</a><a href="#plans">Plans</a><a href="#versions">Versions</a>
+    </nav>
+    <a class="tagbtn small" data-download href="#download">Download free</a>
   </div>
 </header>
 
-<main class="wrap">
+<main>
   <div class="hero">
-    <span class="tag">Version 4.2 &middot; English &middot; &#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577; &middot; Soomaali</span>
-    <h1>Product pictures from any shop. Competitors' prices, watched for you.</h1>
-    <p class="lead">Scraper Tool is a Windows program for shops and resellers. Download a supplier's products with
-       their pictures in minutes, get told when a competitor changes a price, and send your customers a catalogue
-       on WhatsApp.</p>
-    <a class="button" data-download href="#download">Download free</a>
-    <a class="button plain" href="#plans">See the plans</a>
-    <p class="note">Free plan: 200 credits every week, no card. New accounts can try every Pro feature free for 7 days.</p>
+    <div class="wrap">
+      <div>
+        <h1>Every product of any shop, on your PC.</h1>
+        <p class="intro">Type a shop's address and Scraper Tool brings home its pictures, prices, stock and barcodes -
+          sorted in folders, listed in Excel, ready for your own shop and your customers' WhatsApp.</p>
+        <div class="actions">
+          <a class="tagbtn" data-download href="#download">Download free for Windows</a>
+          <a class="line" href="#what">See what you get</a>
+        </div>
+        <p class="free-line"><b>Free to start:</b> 200 credits every week, no card. Every Pro feature free for 7 days.</p>
+        <div class="speaks">Speaks <span>English</span><span lang="ar" dir="rtl">العربية</span><span>Soomaali</span></div>
+      </div>
+
+      <div class="shelf" aria-label="A shop being downloaded: each price label is saved in turn">
+        <div class="shelf-head"><b>Dairy &amp; Eggs</b><span id="hero-version">Scraper Tool 5.0</span></div>
+        <div class="row">
+          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Fresh milk full fat 2 L</span><span class="pr">12.50<small>AED</small></span><span class="bars"></span></div>
+          <div class="lbl"><span class="saved">&#10003;</span><span class="nm" lang="ar" dir="rtl">لبن زبادي طازج ١ كجم</span><span class="was">9.75</span><span class="pr">7.95<small>AED</small></span><span class="bars"></span></div>
+          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Free range eggs, 30 pieces</span><span class="pr">24.00<small>AED</small></span><span class="bars"></span></div>
+        </div>
+        <div class="row">
+          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Cheddar cheese slices 400 g</span><span class="was">18.50</span><span class="pr">14.25<small>AED</small></span><span class="bars"></span></div>
+          <div class="lbl"><span class="saved">&#10003;</span><span class="nm" lang="ar" dir="rtl">زبدة بقرية غير مملحة</span><span class="pr">16.90<small>AED</small></span><span class="bars"></span></div>
+          <div class="lbl"><span class="saved">&#10003;</span><span class="nm">Greek yoghurt honey 4 x 110 g</span><span class="pr">11.00<small>AED</small></span><span class="bars"></span></div>
+        </div>
+        <div class="tally"><span><b id="count">0</b> of 1,248 products saved</span><span class="ok">products.xlsx</span></div>
+        <div class="scan" id="scan"></div>
+      </div>
+    </div>
   </div>
 
-  <section id="features">
-    <h2>What it does</h2>
-    <div class="grid">
-      <div class="card"><div class="icon">&#11015;&#65039;</div><h3>Download any shop</h3><p>Type a shop's address: pictures in tidy folders, and the code, name, price, stock and description of every product. Shopify, WooCommerce and most shop websites.</p></div>
-      <div class="card"><div class="icon">&#128065;&#65039;</div><h3>Watch the market</h3><p>Add competitors' shops. Our server checks them on time - also while your PC is off - and tells you about new products, price drops and stock.</p></div>
-      <div class="card"><div class="icon">&#128276;</div><h3>Alerts on your phone</h3><p>Star products and get a Telegram message or an email when the price drops below your target, plus a daily summary.</p></div>
-      <div class="card"><div class="icon">&#128722;</div><h3>Straight into your shop</h3><p>Export to Shopify, WooCommerce or Excel with your own prices: currency, margin and rounding. Products come in as drafts.</p></div>
-      <div class="card"><div class="icon">&#128196;</div><h3>Catalogues for WhatsApp</h3><p>A PDF catalogue or price list with your logo and prices in one click. Copy it and paste it into WhatsApp.</p></div>
-      <div class="card"><div class="icon">&#128444;&#65039;</div><h3>Pictures ready to sell</h3><p>Resize, make square, compress and rename hundreds of pictures at once. Your originals never change.</p></div>
+  <div class="works">
+    <div class="wrap">
+      <p>Works with almost every online shop</p>
+      <ul><li>Shopify</li><li>WooCommerce</li><li>Magento</li><li>Salla</li><li>Zid</li><li>Wix</li><li>BigCommerce</li><li>and shops made by hand</li></ul>
+    </div>
+  </div>
+
+  <section id="what">
+    <div class="wrap">
+      <div class="head">
+        <h2>One shop address. Everything you need to sell.</h2>
+        <p>No copying pictures one by one. Scraper Tool reads the whole shop the way search engines do, so it finds every product fast.</p>
+      </div>
+      <div class="split">
+        <ul class="gets">
+          <li><h3>Pictures in tidy folders</h3><p>Every picture of every product, sorted by category, named so you can find them.</p></li>
+          <li><h3>Your product list in Excel</h3><p>Names, prices, old prices, stock, barcodes and descriptions - one row per product.</p></li>
+          <li><h3>Straight into your shop</h3><p>Files for Shopify and WooCommerce with your own prices: currency, margin and rounding.</p></li>
+          <li><h3>Catalogues for WhatsApp</h3><p>A PDF catalogue or price list with your logo, made in one click.</p></li>
+          <li><h3>A queue that runs by itself</h3><p>Add many shops and leave. They download one after another, even after a restart.</p></li>
+          <li><h3>History of every download</h3><p>Open the folder, run it again, or queue it - only what is new costs credits.</p></li>
+        </ul>
+        <div class="receipt" aria-label="Example of one download">
+          <h3>Download receipt</h3>
+          <div class="from">giordano.ae - whole shop</div>
+          <dl>
+            <div><dt>Products</dt><dd>1,248</dd></div>
+            <div><dt>Pictures</dt><dd>3,912</dd></div>
+            <div><dt>Barcodes</dt><dd>1,201</dd></div>
+            <div><dt>Prices</dt><dd>AED</dd></div>
+            <div><dt>Excel list</dt><dd>products.xlsx</dd></div>
+            <div><dt>Catalogue</dt><dd>catalogue.pdf</dd></div>
+            <div class="total"><dt>Time</dt><dd>6 min</dd></div>
+          </dl>
+          <div class="bars"></div>
+          <div class="thanks">Already saved products cost nothing next time</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>Your first download in 3 minutes</h2>
-    <div class="grid two">
+  <div class="band" id="protected">
+    <div class="wrap">
       <div>
-        <div class="step"><b>1</b><div>Download Scraper Tool and create your free account.</div></div>
-        <div class="step"><b>2</b><div>Type a shop's address and press <i>Check site</i> - you see sample products and what a download brings.</div></div>
-        <div class="step"><b>3</b><div>Press <i>Start</i>. Your pictures are in the Gallery, ready to export or turn into a catalogue.</div></div>
+        <h2>Shops that block programs? Read them in your own browser.</h2>
+        <p class="lead">Big hypermarkets like LuLu and Carrefour only open for real visitors. The Scraper Tool button
+          in Chrome reads them as you see them - category by category - and hands everything to the app.</p>
+        <div class="chips"><span>LuLu</span><span>Carrefour</span><span>Spinneys</span><span>any shop in your browser</span></div>
       </div>
-      <div class="card"><h3>Have an invite code from a friend?</h3>
-        <p>Enter it when you create your account (or later in <i>Invite friends</i>) and get <b>500 bonus credits</b>.</p></div>
+      <ol class="steps">
+        <li><b>Open the shop in Chrome</b><span>Go to its home page, as you always do.</span></li>
+        <li><b>Press the Scraper Tool button</b><span>Tick the categories you want, or all of them.</span></li>
+        <li><b>It reads every category</b><span>Scrolls, presses "Load more", opens each product for barcodes and pictures.</span></li>
+        <li><b>Send to the app</b><span>Pictures, Excel and catalogues - like any other download.</span></li>
+      </ol>
+    </div>
+  </div>
+
+  <section id="assistant">
+    <div class="wrap two">
+      <div>
+        <h2>Ask for it the way you would ask a person.</h2>
+        <p class="muted" style="font-size:18.5px">Type what you want in English, Arabic or Somali. The assistant picks the
+          categories, the pictures and the details, then starts or queues the download. It runs on your PC, free.</p>
+        <ul class="ask-list">
+          <li><q>only shirts and jeans</q><span>picks the categories</span></li>
+          <li><q>2 pictures each, with prices</q><span>sets what to save</span></li>
+          <li><q lang="ar">ابدأ</q> &nbsp;<q>bilow</q> &nbsp;<q>queue</q><span>starts or waits its turn</span></li>
+        </ul>
+      </div>
+      <div class="chat" aria-hidden="true">
+        <div class="bubble me"><span id="typed"></span><span class="caret"></span></div>
+        <div class="bubble app" id="reply" hidden><small>Scraper Tool understood</small><div class="got" id="got"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="watch">
+    <div class="wrap two">
+      <div class="phone" aria-hidden="true">
+        <div class="screen">
+          <div class="clock">9:41</div>
+          <div class="day">Saturday</div>
+          <div class="note-card"><b>Scraper Tool <em>now</em></b>Price drop: Nike Air Max 90 <span class="down">now 389 AED</span>, was 459</div>
+          <div class="note-card"><b>Scraper Tool <em>12 min</em></b>Back in stock: Samsung Galaxy A55, 128 GB</div>
+          <div class="note-card"><b>Scraper Tool <em>1 h</em></b>Download finished: shop.com - 2,310 products</div>
+        </div>
+      </div>
+      <div>
+        <h2>Know when a competitor changes a price.</h2>
+        <p class="muted" style="font-size:18.5px">Add their shops and our server checks them on time, even while your PC is off.
+          Star the products you care about and get a Telegram message or an email the moment they drop below your price
+          or come back in stock - plus one when your own download finishes.</p>
+        <a class="line" href="#plans">Watching comes with every paid plan</a>
+      </div>
     </div>
   </section>
 
   <section id="plans">
-    <h2>Plans</h2>
-    <p class="lead" style="margin-bottom:18px">Pay for what you save: 1 product in your product list = 1 credit,
-       1 picture = 1 credit. What you already saved is free. Credits refill every Saturday.</p>
-    <div class="grid three" id="plan-cards">
-      <div class="card"><span class="tag">To try it</span><h3>Free</h3><div class="price">$0</div>
-        <ul><li>200 credits a week</li><li>1 picture per product + product list</li><li>English, Arabic, Somali</li><li>7-day Pro trial</li></ul></div>
-      <div class="card"><h3>Standard</h3><div class="price">$4.99 <small>a month</small></div>
-        <ul><li>5,000 credits a week</li><li>Watch 1 shop weekly + alerts</li><li>Excel export, catalogues</li><li>Yearly: $49.90</li></ul></div>
-      <div class="card"><span class="tag">Everything</span><h3>Pro</h3><div class="price">$8.99 <small>a month</small></div>
-        <ul><li>No credit limit</li><li>Watch 20 shops every 6 hours</li><li>Shopify &amp; WooCommerce export</li><li>Yearly: $89.90</li></ul></div>
+    <div class="wrap">
+      <div class="head">
+        <h2>Pay only for what you save.</h2>
+        <p>1 product in your list is 1 credit, 1 picture is 1 credit, and what you already saved is free. Credits refill every Saturday.</p>
+      </div>
+      <div id="plan-cards">
+        <div class="card"><h3>Free</h3><div class="price">$0</div>
+          <ul><li>200 credits a week</li><li>1 picture per product + product list</li><li>English, Arabic, Somali</li><li>7-day Pro trial</li></ul></div>
+        <div class="card"><h3>Standard</h3><div class="price">$4.99 <small>a month</small></div>
+          <ul><li>5,000 credits a week</li><li>Watch 1 shop weekly + alerts</li><li>Excel export, catalogues</li><li>Yearly: $49.90</li></ul></div>
+        <div class="card featured"><span class="tag">Everything</span><h3>Pro</h3><div class="price">$8.99 <small>a month</small></div>
+          <ul><li>No credit limit</li><li>Watch 20 shops every 6 hours</li><li>Shopify &amp; WooCommerce export</li><li>Yearly: $89.90</li></ul></div>
+      </div>
+      <p class="paynote">Pay with EVC Plus or WhatsApp from the app. Invite a friend who buys a plan, and your next month is free.</p>
     </div>
-    <p class="note">Pay by EVC Plus or WhatsApp. Invite friends: when one buys a plan, you get a free month.</p>
   </section>
 
   <section id="versions">
-    <h2>Versions</h2>
-    <div id="version-list"><p class="note">Loading the versions ...</p></div>
+    <div class="wrap">
+      <div class="head"><h2>What changed lately.</h2></div>
+      <div id="version-list"><p class="note" style="padding-left:30px">Loading the versions ...</p></div>
+      <a href="#" class="line small" id="more-versions" hidden>Show every version</a>
+    </div>
   </section>
 
-  <section id="download">
-    <h2>Download</h2>
-    <p class="lead">For Windows 10 and 11. Unzip, then double-click <b>Install.cmd</b>.</p>
-    <a class="button" data-download href="#versions">Download Scraper Tool</a>
-    <p class="note">Questions? Email <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a>.</p>
+  <section id="faq">
+    <div class="wrap faq">
+      <div class="head"><h2>Questions people ask.</h2></div>
+      <details><summary>Which shops does it work with?</summary>
+        <p>Almost every online shop. Shopify and WooCommerce shops are read directly, most other shops through the product data
+           they publish for Google, and shops that block programs are read in your own Chrome with the browser button.</p></details>
+      <details><summary>Is it really free?</summary>
+        <p>Yes. The Free plan gives you 200 credits every week without a card, and new accounts can use every Pro feature free for 7 days.</p></details>
+      <details><summary>Where are my files kept?</summary>
+        <p>On your own PC. Pictures, Excel files and catalogues never leave it - only your account and plan are on our server.</p></details>
+      <details><summary>How do I pay?</summary>
+        <p>With EVC Plus or WhatsApp, from the Plans page in the app. Your plan starts as soon as the payment is confirmed.</p></details>
+      <details><summary>May I download any shop?</summary>
+        <p>Download what you are allowed to use - your own shop, your supplier's catalogue, or public information for your own
+           research - and respect each shop's terms. Read the <a href="terms.html">terms of use</a>.</p></details>
+    </div>
   </section>
+
+  <div class="final" id="download">
+    <div class="wrap">
+      <div>
+        <h2>Bring your first shop home today.</h2>
+        <p>For Windows 10 and 11. Unzip the download, then double-click <b>Install.cmd</b>.</p>
+      </div>
+      <div class="actions">
+        <a class="tagbtn" data-download href="#versions">Download Scraper Tool</a>
+        <a class="line" href="mailto:osmanarap83@gmail.com">Email a question</a>
+      </div>
+    </div>
+  </div>
 </main>
 
 <footer>
   <div class="wrap">
     <span>&copy; 2026 Scraper Tool</span>
-    <span><a href="privacy.html">Privacy policy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms of use</a></span>
+    <span><a href="privacy.html">Privacy policy</a> &nbsp;&nbsp; <a href="terms.html">Terms of use</a> &nbsp;&nbsp; <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a></span>
   </div>
 </footer>
 <script>
-  // 4.2: the plans, the versions and the Download button come from the server (Supabase) by themselves - an admin
+  // The plans, the versions and the Download button come from the server (Supabase) by themselves - an admin
   // changes a price in the app's Prices page, or publishes a version in Updates, and this page shows it.
   // The key below is the project's public key (it is in every copy of the app); signed out it may only read
   // public_plans and public_releases (supabase/v43_credits.sql).
@@ -165,49 +491,106 @@
   function money(n) { return "$" + Number(n).toFixed(2); }
   var FEATURES = {
     free: ["1 picture per product + product list", "English, Arabic, Somali", "7-day Pro trial"],
-    standard: ["Watch 1 shop weekly + alerts", "Excel export, catalogues", "Picture tools"],
+    standard: ["Watch 1 shop weekly + alerts", "Excel export, catalogues", "Picture tools", "Queue up to 50 downloads"],
     pro: ["Watch 20 shops every 6 hours", "Shopify & WooCommerce export", "Every catalogue template", "Webhooks & API"]};
   document.querySelectorAll("a[data-download]").forEach(function (a) { a.href = DOWNLOAD; });
 
   var plansBox = document.getElementById("plan-cards");
-  if (plansBox) {
-    rpc("public_plans").then(function (plans) {
-      var families = {};
-      plans.forEach(function (p) { (families[p.family] = families[p.family] || []).push(p); });
-      var html = "";
-      Object.keys(families).forEach(function (fam) {
-        var list = families[fam], month = list.find(function (p) { return p.billing_months === 1; }) || list[0];
-        var year = list.find(function (p) { return p.billing_months === 12; });
-        var credits = month.weekly_credits == null ? "No credit limit" :
-          Number(month.weekly_credits).toLocaleString("en") + " credits a week";
-        var price = Number(month.price_usd || 0) === 0 ? "$0" : money(month.price_usd) + " <small>a month</small>";
-        var items = [credits].concat(FEATURES[fam] || (month.description ? [month.description] : []));
-        if (year) { items.push("Yearly: " + money(year.price_usd)); }
-        html += '<div class="card">' + (fam === "pro" ? '<span class="tag">Everything</span>' :
-                  fam === "free" ? '<span class="tag">To try it</span>' : "") +
-                "<h3>" + esc(month.name.replace(/\s*\(.*\)$/, "")) + '</h3><div class="price">' + price + "</div><ul>" +
-                items.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul></div>";
-      });
-      if (html) { plansBox.innerHTML = html; }
-    }).catch(function () { /* the prices written in the page stay */ });
-  }
+  rpc("public_plans").then(function (plans) {
+    var families = {};
+    plans.forEach(function (p) { (families[p.family] = families[p.family] || []).push(p); });
+    var html = "";
+    Object.keys(families).forEach(function (fam) {
+      var list = families[fam], month = list.find(function (p) { return p.billing_months === 1; }) || list[0];
+      var year = list.find(function (p) { return p.billing_months === 12; });
+      var credits = month.weekly_credits == null ? "No credit limit" :
+        Number(month.weekly_credits).toLocaleString("en") + " credits a week";
+      var price = Number(month.price_usd || 0) === 0 ? "$0" : money(month.price_usd) + " <small>a month</small>";
+      var items = [credits].concat(FEATURES[fam] || (month.description ? [month.description] : []));
+      if (year) { items.push("Yearly: " + money(year.price_usd)); }
+      html += '<div class="card' + (fam === "pro" ? " featured" : "") + '">' + (fam === "pro" ? '<span class="tag">Everything</span>' : "") +
+              "<h3>" + esc(month.name.replace(/\s*\(.*\)$/, "")) + '</h3><div class="price">' + price + "</div><ul>" +
+              items.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul></div>";
+    });
+    if (html) { plansBox.innerHTML = html; }
+  }).catch(function () { /* the prices written in the page stay */ });
 
-  var versionsBox = document.getElementById("version-list");
-  if (versionsBox) {
-    rpc("public_releases").then(function (list) {
-      if (!list.length) { return; }
-      versionsBox.innerHTML = list.slice(0, 12).map(function (r) {
-        var tags = (r.recommended ? '<span class="tag">Recommended</span> ' : "") +
-                   (r.required ? '<span class="tag" style="color:#F59E0B;border-color:#F59E0B">Required</span>' : "");
-        var notes = String(r.notes || "").split("\n").filter(Boolean).map(function (n) {
-          return "<li>" + esc(n.replace(/^[-*\u2022]\s*/, "")) + "</li>"; }).join("");
-        return '<div class="card version"><div class="vhead"><h3>Version ' + esc(r.version) + "</h3> " + tags +
-               '<span class="date">' + new Date(r.published_at).toLocaleDateString("en", {day: "numeric", month: "short", year: "numeric"}) +
-               '</span><a class="button plain small" href="' + DOWNLOAD + "?version=" + encodeURIComponent(r.version) +
-               '">Download</a></div>' + (notes ? "<ul>" + notes + "</ul>" : "") + "</div>";
-      }).join("");
-    }).catch(function () { versionsBox.innerHTML = '<p class="note">The list of versions could not be loaded right now.</p>'; });
-  }
+  var versionsBox = document.getElementById("version-list"), more = document.getElementById("more-versions");
+  rpc("public_releases").then(function (list) {
+    if (!list.length) { return; }
+    document.getElementById("hero-version").textContent = "Scraper Tool " + list[0].version;
+    versionsBox.innerHTML = list.slice(0, 12).map(function (r, n) {
+      var tags = (r.recommended ? '<span class="pill">Recommended</span>' : "") +
+                 (r.required ? '<span class="pill req">Required</span>' : "");
+      var notes = String(r.notes || "").split("\n").map(function (x) { return x.trim(); })
+        .filter(function (x) { return x && !/^[A-Z0-9 .&'()-]+$/.test(x) && !/^scraper tool/i.test(x) && !/^\d+(\.\d+)*\s*-\s/.test(x); })
+        .slice(0, 8).map(function (x) { return "<li>" + esc(x.replace(/^[-*•]\s*/, "")) + "</li>"; }).join("");
+      return '<div class="version' + (n >= 3 ? " hidden" : "") + '"><div class="vhead"><h3>' + esc(r.version) + "</h3>" + tags +
+             '<span class="date">' + new Date(r.published_at).toLocaleDateString("en", {day: "numeric", month: "short", year: "numeric"}) +
+             '</span><a class="line small" href="' + DOWNLOAD + "?version=" + encodeURIComponent(r.version) +
+             '">Download ' + esc(r.version) + "</a></div>" + (notes ? "<ul>" + notes + "</ul>" : "") + "</div>";
+    }).join("");
+    if (list.length > 3) {
+      more.hidden = false;
+      more.onclick = function (e) { e.preventDefault(); versionsBox.querySelectorAll(".hidden").forEach(function (v) { v.classList.remove("hidden"); }); more.hidden = true; };
+    }
+  }).catch(function () { versionsBox.innerHTML = '<p class="note" style="padding-left:30px">The versions could not be loaded - press Download above for the newest one.</p>'; });
+
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // the hero: a scanner light passes over the shelf, each label is saved in turn
+  (function () {
+    var labels = [].slice.call(document.querySelectorAll(".shelf .lbl")), scan = document.getElementById("scan");
+    var count = document.getElementById("count"), shelf = document.querySelector(".shelf");
+    if (still) { labels.forEach(function (l) { l.classList.add("done"); }); count.textContent = "1,248"; return; }
+    function run() {
+      labels.forEach(function (l) { l.classList.remove("done"); });
+      var i = 0, total = 0;
+      function next() {
+        if (i >= labels.length) {
+          scan.style.opacity = 0;
+          count.textContent = "1,248";
+          return setTimeout(run, 2600);
+        }
+        var l = labels[i], box = l.getBoundingClientRect(), top = shelf.getBoundingClientRect().top;
+        if (l.offsetParent === null) { i++; return next(); }
+        scan.style.opacity = 1;
+        scan.style.transition = "top .5s ease";
+        scan.style.top = (box.top - top + box.height / 2) + "px";
+        setTimeout(function () {
+          l.classList.add("done");
+          total += 208;
+          count.textContent = total.toLocaleString("en");
+          i++;
+          setTimeout(next, 260);
+        }, 520);
+      }
+      next();
+    }
+    setTimeout(run, 600);
+  })();
+
+  // the assistant: a request typed in, and what was understood
+  (function () {
+    var asks = [
+      ["giordano.ae, only shirts and jeans, 2 pictures each, with prices, start", ["giordano.ae", "Shirts, Jeans", "2 pictures each", "+ prices", "starts now"]],
+      ["نزّل الموقع كامل shop.com بدون صور", ["shop.com", "whole shop", "no pictures", "product list"]],
+      ["shop1.com and shop2.com, all pictures, queue", ["shop1.com", "shop2.com", "all pictures", "into the queue"]],
+      ["soo deji giordano.ae dhammaan sawirada, bilow", ["giordano.ae", "all pictures", "starts now"]]];
+    var typed = document.getElementById("typed"), reply = document.getElementById("reply"), got = document.getElementById("got");
+    function show(items) { got.innerHTML = items.map(function (t) { return "<span>" + esc(t) + "</span>"; }).join(""); reply.hidden = false; }
+    function play(n) {
+      var a = asks[n % asks.length], i = 0;
+      typed.setAttribute("dir", /[؀-ۿ]/.test(a[0]) ? "rtl" : "ltr");
+      reply.hidden = true;
+      if (still) { typed.textContent = a[0]; return show(a[1]); }
+      (function type() {
+        if (i <= a[0].length) { typed.textContent = a[0].slice(0, i++); return setTimeout(type, 34); }
+        setTimeout(function () { show(a[1]); setTimeout(function () { play(n + 1); }, 3400); }, 450);
+      })();
+    }
+    play(0);
+  })();
 </script>
 </body>
 </html>
