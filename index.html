@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scraper Tool</title>
+<meta name="description" content="Scraper Tool for Windows: download product pictures and details from online shops, watch competitors' prices, export to Shopify and WooCommerce, and make PDF catalogues. In English, Arabic and Somali.">
+<link rel="icon" href="logo.png">
+<style>
+  :root {
+    --deep: #020617; --surface: #0F172A; --raised: #1E293B; --line: #1E293B;
+    --text: #E2E8F0; --muted: #94A3B8; --blue: #3B82F6; --cyan: #06B6D4; --green: #22C55E;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--deep); color: var(--text); font: 16px/1.6 "Segoe UI", Arial, sans-serif; }
+  a { color: var(--blue); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+  header { border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
+  .brand img { width: 36px; height: 36px; border-radius: 8px; }
+  nav a { color: var(--muted); text-decoration: none; margin-left: 22px; font-size: 15px; }
+  nav a:hover { color: var(--text); }
+  .hero { padding: 72px 0 56px; }
+  .hero h1 { font-size: 42px; line-height: 1.15; margin: 0 0 16px; max-width: 680px; }
+  .hero p { color: var(--muted); font-size: 18px; max-width: 620px; margin: 0 0 28px; }
+  .button { display: inline-block; background: var(--blue); color: #fff; text-decoration: none; font-weight: 600;
+            padding: 12px 22px; border-radius: 10px; }
+  .button.plain { background: var(--raised); margin-left: 10px; }
+  h2 { font-size: 26px; margin: 0 0 18px; }
+  section { padding: 40px 0; border-top: 1px solid var(--line); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+  .card h3 { margin: 0 0 8px; font-size: 18px; }
+  .card p, .card li { color: var(--muted); margin: 0; font-size: 15px; }
+  .card ul { margin: 0; padding-left: 18px; }
+  .price { font-size: 30px; font-weight: 700; color: var(--text); margin: 6px 0 2px; }
+  .price small { font-size: 15px; font-weight: 400; color: var(--muted); }
+  .tag { display: inline-block; font-size: 12px; font-weight: 600; color: var(--cyan); border: 1px solid var(--cyan);
+         border-radius: 6px; padding: 1px 8px; margin-bottom: 8px; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .grid.two { grid-template-columns: repeat(2, 1fr); }
+  .grid.four { grid-template-columns: repeat(4, 1fr); }
+  .lead { color: var(--muted); font-size: 18px; max-width: 640px; margin: 0 0 28px; }
+  .icon { font-size: 26px; margin-bottom: 8px; }
+  .step { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
+  .step b { flex: none; width: 30px; height: 30px; border-radius: 15px; background: var(--blue); color: #fff;
+            display: grid; place-items: center; font-size: 14px; }
+  .note { color: var(--muted); font-size: 14px; margin-top: 12px; }
+  .gift { background: linear-gradient(135deg, #1E3A8A, #0F172A); border: 1px solid #1D4ED8; border-radius: 16px;
+          padding: 28px; }
+  .code { font: 700 34px/1.2 Consolas, monospace; color: #fff; letter-spacing: 2px; margin: 10px 0 6px; }
+  .version { margin-bottom: 12px; }
+  .vhead { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .vhead h3 { margin: 0; }
+  .vhead .date { color: var(--muted); font-size: 14px; margin-left: auto; }
+  .button.small { padding: 6px 14px; font-size: 14px; margin-left: 10px; }
+  .version ul { margin: 10px 0 0; }
+  .grid.three { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 760px) {
+    .grid.three { grid-template-columns: 1fr; }
+    .grid.two, .grid.four { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+    .hero { padding: 44px 0 36px; }
+    .hero h1 { font-size: 32px; }
+    nav a { margin-left: 14px; }
+    .button.plain { margin: 10px 0 0; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="./"><img src="logo.png" alt="">Scraper Tool</a>
+    <nav><a href="#features">Features</a><a href="#plans">Plans</a><a href="#versions">Versions</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <span class="tag">Version 4.2 &middot; English &middot; &#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577; &middot; Soomaali</span>
+    <h1>Product pictures from any shop. Competitors' prices, watched for you.</h1>
+    <p class="lead">Scraper Tool is a Windows program for shops and resellers. Download a supplier's products with
+       their pictures in minutes, get told when a competitor changes a price, and send your customers a catalogue
+       on WhatsApp.</p>
+    <a class="button" data-download href="#download">Download free</a>
+    <a class="button plain" href="#plans">See the plans</a>
+    <p class="note">Free plan: 200 credits every week, no card. New accounts can try every Pro feature free for 7 days.</p>
+  </div>
+
+  <section id="features">
+    <h2>What it does</h2>
+    <div class="grid">
+      <div class="card"><div class="icon">&#11015;&#65039;</div><h3>Download any shop</h3><p>Type a shop's address: pictures in tidy folders, and the code, name, price, stock and description of every product. Shopify, WooCommerce and most shop websites.</p></div>
+      <div class="card"><div class="icon">&#128065;&#65039;</div><h3>Watch the market</h3><p>Add competitors' shops. Our server checks them on time - also while your PC is off - and tells you about new products, price drops and stock.</p></div>
+      <div class="card"><div class="icon">&#128276;</div><h3>Alerts on your phone</h3><p>Star products and get a Telegram message or an email when the price drops below your target, plus a daily summary.</p></div>
+      <div class="card"><div class="icon">&#128722;</div><h3>Straight into your shop</h3><p>Export to Shopify, WooCommerce or Excel with your own prices: currency, margin and rounding. Products come in as drafts.</p></div>
+      <div class="card"><div class="icon">&#128196;</div><h3>Catalogues for WhatsApp</h3><p>A PDF catalogue or price list with your logo and prices in one click. Copy it and paste it into WhatsApp.</p></div>
+      <div class="card"><div class="icon">&#128444;&#65039;</div><h3>Pictures ready to sell</h3><p>Resize, make square, compress and rename hundreds of pictures at once. Your originals never change.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Your first download in 3 minutes</h2>
+    <div class="grid two">
+      <div>
+        <div class="step"><b>1</b><div>Download Scraper Tool and create your free account.</div></div>
+        <div class="step"><b>2</b><div>Type a shop's address and press <i>Check site</i> - you see sample products and what a download brings.</div></div>
+        <div class="step"><b>3</b><div>Press <i>Start</i>. Your pictures are in the Gallery, ready to export or turn into a catalogue.</div></div>
+      </div>
+      <div class="card"><h3>Have an invite code from a friend?</h3>
+        <p>Enter it when you create your account (or later in <i>Invite friends</i>) and get <b>500 bonus credits</b>.</p></div>
+    </div>
+  </section>
+
+  <section id="plans">
+    <h2>Plans</h2>
+    <p class="lead" style="margin-bottom:18px">Pay for what you save: 1 product in your product list = 1 credit,
+       1 picture = 1 credit. What you already saved is free. Credits refill every Saturday.</p>
+    <div class="grid three" id="plan-cards">
+      <div class="card"><span class="tag">To try it</span><h3>Free</h3><div class="price">$0</div>
+        <ul><li>200 credits a week</li><li>1 picture per product + product list</li><li>English, Arabic, Somali</li><li>7-day Pro trial</li></ul></div>
+      <div class="card"><h3>Standard</h3><div class="price">$4.99 <small>a month</small></div>
+        <ul><li>5,000 credits a week</li><li>Watch 1 shop weekly + alerts</li><li>Excel export, catalogues</li><li>Yearly: $49.90</li></ul></div>
+      <div class="card"><span class="tag">Everything</span><h3>Pro</h3><div class="price">$8.99 <small>a month</small></div>
+        <ul><li>No credit limit</li><li>Watch 20 shops every 6 hours</li><li>Shopify &amp; WooCommerce export</li><li>Yearly: $89.90</li></ul></div>
+    </div>
+    <p class="note">Pay by EVC Plus or WhatsApp. Invite friends: when one buys a plan, you get a free month.</p>
+  </section>
+
+  <section id="versions">
+    <h2>Versions</h2>
+    <div id="version-list"><p class="note">Loading the versions ...</p></div>
+  </section>
+
+  <section id="download">
+    <h2>Download</h2>
+    <p class="lead">For Windows 10 and 11. Unzip, then double-click <b>Install.cmd</b>.</p>
+    <a class="button" data-download href="#versions">Download Scraper Tool</a>
+    <p class="note">Questions? Email <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a>.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Scraper Tool</span>
+    <span><a href="privacy.html">Privacy policy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms of use</a></span>
+  </div>
+</footer>
+<script>
+  // 4.2: the plans, the versions and the Download button come from the server (Supabase) by themselves - an admin
+  // changes a price in the app's Prices page, or publishes a version in Updates, and this page shows it.
+  // The key below is the project's public key (it is in every copy of the app); signed out it may only read
+  // public_plans and public_releases (supabase/v43_credits.sql).
+  var SUPA = "https://cfkvwguxueqmuphjmatf.supabase.co", KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNma3Z3Z3V4dWVxbXVwaGptYXRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5NjE0NjgsImV4cCI6MjEwNzUzNzQ2OH0.2wjFzjviww6t-uIDuJPjhmELYF5XbsiPtSDMUbQUJxU";
+  var DOWNLOAD = SUPA + "/functions/v1/download";
+  function rpc(name) {
+    return fetch(SUPA + "/rest/v1/rpc/" + name, {method: "POST", body: "{}", headers: {
+      "apikey": KEY, "Authorization": "Bearer " + KEY, "Content-Type": "application/json"}})
+      .then(function (r) { if (!r.ok) { throw new Error(r.status); } return r.json(); });
+  }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+    return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]; }); }
+  function money(n) { return "$" + Number(n).toFixed(2); }
+  var FEATURES = {
+    free: ["1 picture per product + product list", "English, Arabic, Somali", "7-day Pro trial"],
+    standard: ["Watch 1 shop weekly + alerts", "Excel export, catalogues", "Picture tools"],
+    pro: ["Watch 20 shops every 6 hours", "Shopify & WooCommerce export", "Every catalogue template", "Webhooks & API"]};
+  document.querySelectorAll("a[data-download]").forEach(function (a) { a.href = DOWNLOAD; });
+
+  var plansBox = document.getElementById("plan-cards");
+  if (plansBox) {
+    rpc("public_plans").then(function (plans) {
+      var families = {};
+      plans.forEach(function (p) { (families[p.family] = families[p.family] || []).push(p); });
+      var html = "";
+      Object.keys(families).forEach(function (fam) {
+        var list = families[fam], month = list.find(function (p) { return p.billing_months === 1; }) || list[0];
+        var year = list.find(function (p) { return p.billing_months === 12; });
+        var credits = month.weekly_credits == null ? "No credit limit" :
+          Number(month.weekly_credits).toLocaleString("en") + " credits a week";
+        var price = Number(month.price_usd || 0) === 0 ? "$0" : money(month.price_usd) + " <small>a month</small>";
+        var items = [credits].concat(FEATURES[fam] || (month.description ? [month.description] : []));
+        if (year) { items.push("Yearly: " + money(year.price_usd)); }
+        html += '<div class="card">' + (fam === "pro" ? '<span class="tag">Everything</span>' :
+                  fam === "free" ? '<span class="tag">To try it</span>' : "") +
+                "<h3>" + esc(month.name.replace(/\s*\(.*\)$/, "")) + '</h3><div class="price">' + price + "</div><ul>" +
+                items.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul></div>";
+      });
+      if (html) { plansBox.innerHTML = html; }
+    }).catch(function () { /* the prices written in the page stay */ });
+  }
+
+  var versionsBox = document.getElementById("version-list");
+  if (versionsBox) {
+    rpc("public_releases").then(function (list) {
+      if (!list.length) { return; }
+      versionsBox.innerHTML = list.slice(0, 12).map(function (r) {
+        var tags = (r.recommended ? '<span class="tag">Recommended</span> ' : "") +
+                   (r.required ? '<span class="tag" style="color:#F59E0B;border-color:#F59E0B">Required</span>' : "");
+        var notes = String(r.notes || "").split("\n").filter(Boolean).map(function (n) {
+          return "<li>" + esc(n.replace(/^[-*\u2022]\s*/, "")) + "</li>"; }).join("");
+        return '<div class="card version"><div class="vhead"><h3>Version ' + esc(r.version) + "</h3> " + tags +
+               '<span class="date">' + new Date(r.published_at).toLocaleDateString("en", {day: "numeric", month: "short", year: "numeric"}) +
+               '</span><a class="button plain small" href="' + DOWNLOAD + "?version=" + encodeURIComponent(r.version) +
+               '">Download</a></div>' + (notes ? "<ul>" + notes + "</ul>" : "") + "</div>";
+      }).join("");
+    }).catch(function () { versionsBox.innerHTML = '<p class="note">The list of versions could not be loaded right now.</p>'; });
+  }
+</script>
+</body>
+</html>

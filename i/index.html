@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>You're invited - Scraper Tool</title>
+<meta name="description" content="Scraper Tool for Windows: download product pictures and details from online shops, watch competitors' prices, export to Shopify and WooCommerce, and make PDF catalogues. In English, Arabic and Somali.">
+<link rel="icon" href="../logo.png">
+<style>
+  :root {
+    --deep: #020617; --surface: #0F172A; --raised: #1E293B; --line: #1E293B;
+    --text: #E2E8F0; --muted: #94A3B8; --blue: #3B82F6; --cyan: #06B6D4; --green: #22C55E;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--deep); color: var(--text); font: 16px/1.6 "Segoe UI", Arial, sans-serif; }
+  a { color: var(--blue); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+  header { border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
+  .brand img { width: 36px; height: 36px; border-radius: 8px; }
+  nav a { color: var(--muted); text-decoration: none; margin-left: 22px; font-size: 15px; }
+  nav a:hover { color: var(--text); }
+  .hero { padding: 72px 0 56px; }
+  .hero h1 { font-size: 42px; line-height: 1.15; margin: 0 0 16px; max-width: 680px; }
+  .hero p { color: var(--muted); font-size: 18px; max-width: 620px; margin: 0 0 28px; }
+  .button { display: inline-block; background: var(--blue); color: #fff; text-decoration: none; font-weight: 600;
+            padding: 12px 22px; border-radius: 10px; }
+  .button.plain { background: var(--raised); margin-left: 10px; }
+  h2 { font-size: 26px; margin: 0 0 18px; }
+  section { padding: 40px 0; border-top: 1px solid var(--line); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+  .card h3 { margin: 0 0 8px; font-size: 18px; }
+  .card p, .card li { color: var(--muted); margin: 0; font-size: 15px; }
+  .card ul { margin: 0; padding-left: 18px; }
+  .price { font-size: 30px; font-weight: 700; color: var(--text); margin: 6px 0 2px; }
+  .price small { font-size: 15px; font-weight: 400; color: var(--muted); }
+  .tag { display: inline-block; font-size: 12px; font-weight: 600; color: var(--cyan); border: 1px solid var(--cyan);
+         border-radius: 6px; padding: 1px 8px; margin-bottom: 8px; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .grid.two { grid-template-columns: repeat(2, 1fr); }
+  .grid.four { grid-template-columns: repeat(4, 1fr); }
+  .lead { color: var(--muted); font-size: 18px; max-width: 640px; margin: 0 0 28px; }
+  .icon { font-size: 26px; margin-bottom: 8px; }
+  .step { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px; }
+  .step b { flex: none; width: 30px; height: 30px; border-radius: 15px; background: var(--blue); color: #fff;
+            display: grid; place-items: center; font-size: 14px; }
+  .note { color: var(--muted); font-size: 14px; margin-top: 12px; }
+  .gift { background: linear-gradient(135deg, #1E3A8A, #0F172A); border: 1px solid #1D4ED8; border-radius: 16px;
+          padding: 28px; }
+  .code { font: 700 34px/1.2 Consolas, monospace; color: #fff; letter-spacing: 2px; margin: 10px 0 6px; }
+  @media (max-width: 760px) {
+    .grid.two, .grid.four { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+    .hero { padding: 44px 0 36px; }
+    .hero h1 { font-size: 32px; }
+    nav a { margin-left: 14px; }
+    .button.plain { margin: 10px 0 0; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../logo.png" alt="">Scraper Tool</a>
+    <nav><a href="../#features">Features</a><a href="../#plans">Plans</a><a href="../#download">Download</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div class="gift">
+      <span class="tag">You're invited</span>
+      <h1 style="margin-top:10px">Get 500 free credits</h1>
+      <p class="lead" style="margin-bottom:6px">A friend invited you to Scraper Tool. Use this code when you create
+         your account:</p>
+      <div class="code" id="code">-</div>
+      <p class="note" id="nocode" hidden>No code in this link - ask your friend to send it again.</p>
+      <p style="margin:22px 0 0">
+        <a class="button" data-download href="../#versions">Download Scraper Tool</a>
+        <a class="button plain" href="#" id="copy">Copy the code</a>
+      </p>
+    </div>
+  </div>
+
+  <section>
+    <h2>How to use your code</h2>
+    <div class="step"><b>1</b><div>Download Scraper Tool, unzip it and double-click <b>Install.cmd</b>.</div></div>
+    <div class="step"><b>2</b><div>Press <i>Create an account</i> and type the code in <i>Invite code</i>.</div></div>
+    <div class="step"><b>3</b><div>Done - 500 bonus credits (500 products or pictures), on top of the Free plan's 200 credits a week. Signed up with Google?
+       Enter the code in <i>Invite friends</i> instead (in your first 14 days).</div></div>
+  </section>
+
+  <section>
+    <h2>What Scraper Tool does</h2>
+    <div class="grid">
+      <div class="card"><h3>Download any shop</h3><p>Pictures and product details from Shopify, WooCommerce and most shop websites.</p></div>
+      <div class="card"><h3>Watch competitors</h3><p>Price drops, new products and stock - by Telegram or email, even while your PC is off.</p></div>
+      <div class="card"><h3>Sell faster</h3><p>Export to your shop with your prices, or send a PDF catalogue on WhatsApp.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Scraper Tool</span>
+    <span><a href="../privacy.html">Privacy policy</a> &nbsp;&middot;&nbsp; <a href="../terms.html">Terms of use</a></span>
+  </div>
+</footer>
+<script>
+  // the code: ?code=OSMANK7Q, or /i/OSMANK7Q (with the rule in _redirects)
+  var raw = new URLSearchParams(location.search).get("code") || location.pathname.split("/").filter(Boolean).pop() || "";
+  var code = raw.toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 12);
+  if (code.length < 6) { code = ""; }
+  document.getElementById("code").textContent = code || "-";
+  document.getElementById("nocode").hidden = !!code;
+  document.getElementById("copy").addEventListener("click", function (e) {
+    e.preventDefault();
+    if (code && navigator.clipboard) { navigator.clipboard.writeText(code); this.textContent = "Copied!"; }
+  });
+</script>
+<script>
+  // 4.2: the plans, the versions and the Download button come from the server (Supabase) by themselves - an admin
+  // changes a price in the app's Prices page, or publishes a version in Updates, and this page shows it.
+  // The key below is the project's public key (it is in every copy of the app); signed out it may only read
+  // public_plans and public_releases (supabase/v43_credits.sql).
+  var SUPA = "https://cfkvwguxueqmuphjmatf.supabase.co", KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNma3Z3Z3V4dWVxbXVwaGptYXRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5NjE0NjgsImV4cCI6MjEwNzUzNzQ2OH0.2wjFzjviww6t-uIDuJPjhmELYF5XbsiPtSDMUbQUJxU";
+  var DOWNLOAD = SUPA + "/functions/v1/download";
+  function rpc(name) {
+    return fetch(SUPA + "/rest/v1/rpc/" + name, {method: "POST", body: "{}", headers: {
+      "apikey": KEY, "Authorization": "Bearer " + KEY, "Content-Type": "application/json"}})
+      .then(function (r) { if (!r.ok) { throw new Error(r.status); } return r.json(); });
+  }
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+    return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]; }); }
+  function money(n) { return "$" + Number(n).toFixed(2); }
+  var FEATURES = {
+    free: ["1 picture per product + product list", "English, Arabic, Somali", "7-day Pro trial"],
+    standard: ["Watch 1 shop weekly + alerts", "Excel export, catalogues", "Picture tools"],
+    pro: ["Watch 20 shops every 6 hours", "Shopify & WooCommerce export", "Every catalogue template", "Webhooks & API"]};
+  document.querySelectorAll("a[data-download]").forEach(function (a) { a.href = DOWNLOAD; });
+
+  var plansBox = document.getElementById("plan-cards");
+  if (plansBox) {
+    rpc("public_plans").then(function (plans) {
+      var families = {};
+      plans.forEach(function (p) { (families[p.family] = families[p.family] || []).push(p); });
+      var html = "";
+      Object.keys(families).forEach(function (fam) {
+        var list = families[fam], month = list.find(function (p) { return p.billing_months === 1; }) || list[0];
+        var year = list.find(function (p) { return p.billing_months === 12; });
+        var credits = month.weekly_credits == null ? "No credit limit" :
+          Number(month.weekly_credits).toLocaleString("en") + " credits a week";
+        var price = Number(month.price_usd || 0) === 0 ? "$0" : money(month.price_usd) + " <small>a month</small>";
+        var items = [credits].concat(FEATURES[fam] || (month.description ? [month.description] : []));
+        if (year) { items.push("Yearly: " + money(year.price_usd)); }
+        html += '<div class="card">' + (fam === "pro" ? '<span class="tag">Everything</span>' :
+                  fam === "free" ? '<span class="tag">To try it</span>' : "") +
+                "<h3>" + esc(month.name.replace(/\s*\(.*\)$/, "")) + '</h3><div class="price">' + price + "</div><ul>" +
+                items.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul></div>";
+      });
+      if (html) { plansBox.innerHTML = html; }
+    }).catch(function () { /* the prices written in the page stay */ });
+  }
+
+  var versionsBox = document.getElementById("version-list");
+  if (versionsBox) {
+    rpc("public_releases").then(function (list) {
+      if (!list.length) { return; }
+      versionsBox.innerHTML = list.slice(0, 12).map(function (r) {
+        var tags = (r.recommended ? '<span class="tag">Recommended</span> ' : "") +
+                   (r.required ? '<span class="tag" style="color:#F59E0B;border-color:#F59E0B">Required</span>' : "");
+        var notes = String(r.notes || "").split("\n").filter(Boolean).map(function (n) {
+          return "<li>" + esc(n.replace(/^[-*\u2022]\s*/, "")) + "</li>"; }).join("");
+        return '<div class="card version"><div class="vhead"><h3>Version ' + esc(r.version) + "</h3> " + tags +
+               '<span class="date">' + new Date(r.published_at).toLocaleDateString("en", {day: "numeric", month: "short", year: "numeric"}) +
+               '</span><a class="button plain small" href="' + DOWNLOAD + "?version=" + encodeURIComponent(r.version) +
+               '">Download</a></div>' + (notes ? "<ul>" + notes + "</ul>" : "") + "</div>";
+      }).join("");
+    }).catch(function () { versionsBox.innerHTML = '<p class="note">The list of versions could not be loaded right now.</p>'; });
+  }
+</script>
+</body>
+</html>
