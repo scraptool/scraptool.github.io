@@ -202,7 +202,7 @@
 
   /* ------------------------------------------------ versions: a timeline */
   #version-list { border-left: 3px solid var(--ink); margin-left: 8px; }
-  .version { position: relative; padding: 0 0 34px 34px; }
+  .version { position: relative; padding: 0 0 26px 34px; }
   .version::before { content: ""; position: absolute; left: -10px; top: 6px; width: 17px; height: 17px; border-radius: 50%;
                      background: var(--paper); border: 3px solid var(--ink); }
   .version:first-child::before { background: var(--label); }
@@ -440,7 +440,7 @@
 
   <section id="versions">
     <div class="wrap">
-      <div class="head"><h2>What changed lately.</h2></div>
+      <div class="head"><h2>Versions.</h2><p>The newest one is always the best to download.</p></div>
       <div id="version-list"><p class="note" style="padding-left:30px">Loading the versions ...</p></div>
       <a href="#" class="line small" id="more-versions" hidden>Show every version</a>
     </div>
@@ -513,7 +513,7 @@
   document.querySelectorAll("a[data-download]").forEach(function (a) { a.href = DOWNLOAD; });
 
   // WhatsApp: your number with the country code, digits only (e.g. "252612345678"). Empty: the buttons stay hidden.
-  var WHATSAPP = "";
+  var WHATSAPP = "252613007104";
   if (/^\d{8,15}$/.test(WHATSAPP)) {
     var chat = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Hello, I have a question about Scraper Tool.");
     document.querySelectorAll("[data-whatsapp]").forEach(function (el) { el.hidden = false; if (el.tagName === "A") { el.href = chat; } });
@@ -547,13 +547,10 @@
     versionsBox.innerHTML = list.slice(0, 12).map(function (r, n) {
       var tags = (r.recommended ? '<span class="pill">Recommended</span>' : "") +
                  (r.required ? '<span class="pill req">Required</span>' : "");
-      var notes = String(r.notes || "").split("\n").map(function (x) { return x.trim(); })
-        .filter(function (x) { return x && !/^[A-Z0-9 .&'()-]+$/.test(x) && !/^scraper tool/i.test(x) && !/^\d+(\.\d+)*\s*-\s/.test(x); })
-        .slice(0, 8).map(function (x) { return "<li>" + esc(x.replace(/^[-*•]\s*/, "")) + "</li>"; }).join("");
       return '<div class="version' + (n >= 3 ? " hidden" : "") + '"><div class="vhead"><h3>' + esc(r.version) + "</h3>" + tags +
              '<span class="date">' + new Date(r.published_at).toLocaleDateString("en", {day: "numeric", month: "short", year: "numeric"}) +
              '</span><a class="line small" href="' + DOWNLOAD + "?version=" + encodeURIComponent(r.version) +
-             '">Download ' + esc(r.version) + "</a></div>" + (notes ? "<ul>" + notes + "</ul>" : "") + "</div>";
+             '">Download ' + esc(r.version) + "</a></div></div>";
     }).join("");
     if (list.length > 3) {
       more.hidden = false;
