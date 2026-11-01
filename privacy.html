@@ -4,100 +4,152 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy policy - Scraper Tool</title>
+<meta name="description" content="What Scraper Tool keeps about you, why, for how long, and what you can do about it.">
+<meta name="theme-color" content="#102A36">
 <link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --deep: #020617; --surface: #0F172A; --line: #1E293B; --text: #E2E8F0; --muted: #94A3B8; --blue: #3B82F6; }
+  :root { --ink: #102A36; --ink-2: #29495A; --ink-3: #5B7685; --paper: #F4F7F5; --white: #FFFFFF; --mist: #DCE6E1;
+          --label: #FFCF33; --label-deep: #F2B705; --leaf: #1E7A55;
+          --display: "Readex Pro", "Segoe UI", system-ui, sans-serif; --body: "Figtree", "Segoe UI", system-ui, sans-serif; }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--deep); color: var(--text); font: 16px/1.7 "Segoe UI", Arial, sans-serif; }
-  a { color: var(--blue); }
-  header { border-bottom: 1px solid var(--line); }
-  header div, main, footer div { max-width: 780px; margin: 0 auto; padding: 0 20px; }
-  header div { display: flex; align-items: center; height: 72px; }
-  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
-  .brand img { width: 36px; height: 36px; border-radius: 8px; }
-  main { padding-top: 40px; padding-bottom: 40px; }
-  h1 { font-size: 34px; margin: 0 0 4px; }
-  .date { color: var(--muted); margin: 0 0 28px; }
-  h2 { font-size: 20px; margin: 32px 0 8px; }
-  p, li { color: #CBD5E1; }
-  ul { padding-left: 20px; }
-  footer { border-top: 1px solid var(--line); padding: 24px 0 36px; color: var(--muted); font-size: 14px; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.65 var(--body); -webkit-font-smoothing: antialiased; }
+  a { color: var(--leaf); text-underline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--leaf); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding-inline: 24px; }
+  header { position: sticky; top: 0; z-index: 30; background: rgba(244, 247, 245, .92); backdrop-filter: blur(10px);
+           border-bottom: 1px solid var(--mist); }
+  header .wrap { display: flex; align-items: center; height: 70px; gap: 28px; }
+  .brand { display: flex; align-items: center; gap: 10px; font: 700 20px var(--display); color: var(--ink); text-decoration: none; margin-right: auto; }
+  .brand img { width: 36px; height: 36px; border-radius: 10px; }
+  .tagbtn { position: relative; display: inline-flex; align-items: center; font: 700 14.5px/1 var(--body); color: var(--ink);
+            background: var(--label); text-decoration: none; padding: 11px 18px 11px 32px; border-radius: 6px 12px 12px 6px;
+            clip-path: polygon(12px 0, 100% 0, 100% 100%, 12px 100%, 0 50%); }
+  .tagbtn::before { content: ""; position: absolute; left: 13px; top: 50%; width: 7px; height: 7px; margin-top: -3.5px;
+                    border-radius: 50%; background: var(--paper); }
+  .tagbtn:hover { background: var(--label-deep); }
+  .page { display: grid; grid-template-columns: 240px 1fr; gap: 64px; padding-block: 64px 90px; }
+  .toc { position: sticky; top: 100px; align-self: start; font-size: 15px; }
+  .toc b { display: block; font: 600 15px var(--display); margin-bottom: 10px; }
+  .toc a { display: block; color: var(--ink-2); text-decoration: none; padding: 5px 0 5px 14px; border-left: 2px solid var(--mist); }
+  .toc a:hover { color: var(--ink); border-left-color: var(--ink); }
+  article { max-width: 720px; }
+  h1 { font: 700 clamp(38px, 5vw, 56px)/1.05 var(--display); letter-spacing: -1.6px; margin: 0 0 14px; }
+  .updated { display: inline-block; background: var(--label); font-weight: 600; font-size: 14.5px; border-radius: 6px; padding: 3px 10px; margin-bottom: 22px; }
+  .intro { font-size: 19px; color: var(--ink-2); margin: 0 0 12px; }
+  h2 { font: 600 25px/1.2 var(--display); letter-spacing: -.4px; margin: 48px 0 12px; padding-top: 22px; border-top: 2px solid var(--ink); scroll-margin-top: 90px; }
+  p { margin: 0 0 14px; color: var(--ink-2); }
+  ul { margin: 0 0 14px; padding: 0; list-style: none; }
+  li { position: relative; padding: 6px 0 6px 26px; color: var(--ink-2); }
+  li::before { content: ""; position: absolute; left: 2px; top: 17px; width: 10px; height: 10px; border-radius: 3px; background: var(--label);
+               box-shadow: inset 0 0 0 1.5px var(--ink); }
+  li b, p b { color: var(--ink); }
+  .box { background: var(--white); border: 1px solid var(--mist); border-radius: 14px; padding: 18px 22px; margin: 18px 0; }
+  .box p:last-child { margin: 0; }
+  footer { background: var(--ink); color: #B8CBC3; font-size: 15px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding-block: 30px; }
+  footer a { color: #E6EFEA; }
+  @media (max-width: 860px) { .page { grid-template-columns: 1fr; gap: 24px; padding-top: 40px; } .toc { position: static; } }
+  @media (max-width: 600px) { .wrap { padding-inline: 18px; } header .tagbtn { display: none; } }
 </style>
 </head>
 <body>
-<header><div><a class="brand" href="index.html"><img src="logo.png" alt="">Scraper Tool</a></div></header>
+<header>
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="logo.png" alt="">Scraper Tool</a>
+    <a class="tagbtn" href="index.html#download">Download free</a>
+  </div>
+</header>
+<main class="wrap page">
+  <nav class="toc" aria-label="On this page"><b>On this page</b><a href="#keep">What we keep</a><a href="#pc">What stays on your PC</a><a href="#browser">The browser button</a><a href="#why">Why we keep it</a><a href="#long">How long we keep it</a><a href="#choices">Your choices</a><a href="#safety">Safety</a><a href="#children">Children</a><a href="#changes">Changes and contact</a></nav>
+  <article>
+    <h1>Privacy policy</h1>
+    <span class="updated">Updated 1 November 2026 - for Scraper Tool 5.0</span>
+    <p class="intro">Scraper Tool is a Windows program with an online account. This page says what we keep about you, why,
+       for how long, and what you can do about it.</p>
+    <h2 id="keep">What we keep</h2>
+    <ul>
+      <li><b>Your account:</b> name, email, your role, and what you add to your profile (phone, date of birth, ID number,
+          bio, time zone, photo, your look). Your password is kept only in protected form by the sign-in service.</li>
+      <li><b>Your plan and payments:</b> the plan, your weekly and bonus credits, the payments you send (method, amount,
+          the reference you type) and your invoices.</li>
+      <li><b>Your downloads:</b> which website, when, what kind, and how many products and pictures were saved - to
+          count your credits. The pictures and lists themselves stay on your PC.</li>
+      <li><b>Watched shops and stars:</b> the shops you add, their products' public names, links, prices and stock, the
+          changes found, and the products you star.</li>
+      <li><b>Alerts:</b> the email address you give for alerts and, when you connect it, your Telegram chat. This includes
+          the short "download finished" messages you ask for. Alerts waiting to be sent are kept 30 days.</li>
+      <li><b>Invites:</b> your invite code, who joined with it and the rewards.</li>
+      <li><b>The security log:</b> sign-ins, failed sign-ins, changes to accounts, plans, payments, watched shops and alert
+          settings, downloads, exports and catalogues - with the time, the PC's name, the app version and the internet
+          address, so problems and misuse can be traced. Pages opened and buttons pressed (the name of the button only,
+          never what you type) are part of it too.</li>
+      <li><b>Where you are signed in:</b> each PC's name and last activity, so you can sign out a PC you do not know.</li>
+      <li><b>Webhooks and API keys</b> you set up: the addresses and a protected form of each key, never the key itself.</li>
+    </ul>
 
-<main>
-  <h1>Privacy policy</h1>
-  <p class="date">Updated 1 November 2026 &middot; for Scraper Tool 4.x</p>
-  <p>Scraper Tool is a Windows program with an online account. This page says what we keep about you, why, who
-     else handles it, and what you can do about it. We do not sell your data, and we do not show ads.</p>
+    <h2 id="pc">What stays on your PC</h2>
+    <p>Downloaded pictures, product lists (products.csv / .xlsx), catalogues, exports, picture-tool copies, presets, your
+       download <b>History</b> and <b>Queue</b>, the gallery's small pictures and - for the Owner - the nightly backups are
+       saved on your own PC only. A "keep me signed in" login is stored encrypted for your Windows user.</p>
+    <p>The <b>assistant</b> understands your requests on your PC; what you type is not sent to us.</p>
 
-  <h2>What we keep</h2>
-  <ul>
-    <li><b>Your account:</b> name, email, password (only as a protected hash, by our login provider), your role,
-        and what you add to your profile (phone, date of birth, ID number, bio, time zone, photo, your look).</li>
-    <li><b>Your plan and payments:</b> the plan, its period, your weekly credits and bonus credits, the payments you
-        send (method, amount, the reference you type) and your invoices.</li>
-    <li><b>Your downloads:</b> which website, when, what kind, and how many products and pictures were saved - to
-        count your credits. The pictures and lists themselves stay on your PC (see below).</li>
-    <li><b>Watched shops:</b> the shops you add, their products' names, links, pictures' addresses, prices and stock
-        as the shop shows them publicly, the changes found, and the products you star.</li>
-    <li><b>Alerts:</b> the email address you give for alerts, and - when you connect it - your Telegram chat number
-        and Telegram name. Alerts waiting to be sent are kept 30 days.</li>
-    <li><b>Invites:</b> your invite code, who joined with it (not shown to you by name) and the rewards.</li>
-    <li><b>Security log (audit log):</b> sign-ins, failed sign-ins, changes to accounts, plans and payments, with the
-        time, the PC's name, the app version and the internet address, so problems and misuse can be traced.</li>
-    <li><b>Where you are signed in:</b> each PC's name, app and last activity, so you can sign out a PC you don't
-        know.</li>
-    <li><b>Webhooks and API keys</b> you set up: the addresses, a protected form of each key (never the key itself)
-        and the last messages sent (kept 30 days).</li>
-  </ul>
+    <h2 id="browser">The browser button</h2>
+    <p>The Scraper Tool button for Chrome and Edge talks only to the app on your own PC (127.0.0.1), and only after you
+       paste the pairing code from the app. When you ask it to read a shop, it reads the pages of that shop that you open,
+       keeps the products in your browser until you send them, and hands them to the app on your PC. It does not read
+       other websites, your passwords or your browsing, and sends nothing to us.</p>
 
-  <h2>What stays on your PC</h2>
-  <p>Downloaded pictures, product lists (products.csv / .xlsx), catalogues, exports, picture-tool copies, presets,
-     the gallery's small pictures and - for the Owner - backups are saved on your own PC only. A "keep me signed in"
-     login is stored encrypted for your Windows user.</p>
+    <h2 id="why">Why we keep it</h2>
+    <ul>
+      <li>to sign you in and keep your account safe;</li>
+      <li>to give you your plan: count credits, confirm payments, make invoices;</li>
+      <li>to check the shops you watch and send the alerts you asked for;</li>
+      <li>to stop misuse and to find out what happened when something goes wrong.</li>
+    </ul>
+    <p>We do not sell your data, and we do not show ads.</p>
 
-  <h2>Why we keep it</h2>
-  <ul>
-    <li>to sign you in and keep your account safe;</li>
-    <li>to give you your plan: count credits, confirm payments, make invoices;</li>
-    <li>to check the shops you watch and send the alerts you asked for;</li>
-    <li>to stop misuse (limits on tries and downloads) and to find out what happened when something goes wrong.</li>
-  </ul>
+    <h2 id="long">How long we keep it</h2>
+    <ul>
+      <li><b>Your account:</b> while you have an account.</li>
+      <li><b>The security log:</b> pages opened and buttons pressed for 90 days; everything else for 2 years. Old entries
+          are removed automatically every night.</li>
+      <li><b>Download counts and credit use:</b> 2 years.</li>
+      <li><b>Watch changes and price history:</b> 30 days on Standard, 1 year on Pro.</li>
+      <li><b>Alerts and webhook messages:</b> 30 days. <b>Invoices:</b> as long as the law asks.</li>
+    </ul>
+    <p>When an account is deleted, its watched shops, stars, alerts and credits go with it; invoices and the security log
+       are kept for the times above.</p>
 
+    <h2 id="choices">Your choices</h2>
+    <ul>
+      <li>Change your details, photo, look and alerts in the app (Profile).</li>
+      <li>Sign out other PCs, disconnect Telegram, switch alerts off, remove watched shops and stars at any time.</li>
+      <li>Clear your download History on your PC whenever you like.</li>
+      <li>Ask for a copy of your data, a correction, or the deletion of your account: <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a>.</li>
+    </ul>
 
-  <h2>How long we keep it</h2>
-  <p>Your account data is kept while you have an account. Watch changes and price history are kept 30 days
-     (Standard) or 1 year (Pro); alerts and webhook messages 30 days; misuse counters 2 days; invoices as long as
-     the law asks for them. When an account is deleted, its watched shops, stars, alerts and credits go with it;
-     invoices and the security log are kept.</p>
+    <h2 id="safety">Safety</h2>
+    <p>Connections are encrypted (https). Each person can read only their own data; admins see more only with the
+       permissions their role gives them, and everything they change is written in the security log, which nobody can
+       edit or delete.</p>
 
-  <h2>Your choices</h2>
-  <ul>
-    <li>Change your details, photo, look and alerts in the app (Profile).</li>
-    <li>Sign out other PCs (Profile &gt; Security), disconnect Telegram, switch email alerts off, remove watched
-        shops and stars at any time.</li>
-    <li>Ask for a copy of your data, a correction, or the deletion of your account: <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a>.</li>
-  </ul>
+    <h2 id="children">Children</h2>
+    <p>Scraper Tool is a tool for businesses and is not meant for children under 16.</p>
 
-  <h2>Safety</h2>
-  <p>Connections are encrypted (https). Each person can only read their own data; admins see more only with the
-     permissions their role gives them, and their changes are written in the security log. Passwords are never
-     stored by us in readable form.</p>
+    <h2 id="changes">Changes and contact</h2>
+    <p>When this policy changes, the date at the top changes, and important changes are announced in the app.
+       Questions about your data: <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a>.</p>
 
-  <h2>Children</h2>
-  <p>Scraper Tool is a tool for businesses and is not meant for children under 16.</p>
-
-  <h2>Changes</h2>
-  <p>When this policy changes, the date at the top changes, and important changes are announced in the app.</p>
-
-  <h2>Contact</h2>
-  <p>Questions about your data: <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a>.</p>
+  </article>
 </main>
-
-<footer><div>&copy; 2026 Scraper Tool &nbsp;&middot;&nbsp; <a href="index.html">Home</a> &nbsp;&middot;&nbsp;
-  <a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms</a></div></footer>
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Scraper Tool</span>
+    <span><a href="index.html">Home</a> &nbsp;&nbsp; <a href="privacy.html">Privacy policy</a> &nbsp;&nbsp; <a href="terms.html">Terms of use</a> &nbsp;&nbsp; <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a></span>
+  </div>
+</footer>
 </body>
 </html>

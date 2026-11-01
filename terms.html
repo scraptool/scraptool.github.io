@@ -4,81 +4,126 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Terms of use - Scraper Tool</title>
+<meta name="description" content="The short rules for using Scraper Tool: what you may download, your account, credits and payments.">
+<meta name="theme-color" content="#102A36">
 <link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@500;600;700&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root { --deep: #020617; --surface: #0F172A; --line: #1E293B; --text: #E2E8F0; --muted: #94A3B8; --blue: #3B82F6; }
+  :root { --ink: #102A36; --ink-2: #29495A; --ink-3: #5B7685; --paper: #F4F7F5; --white: #FFFFFF; --mist: #DCE6E1;
+          --label: #FFCF33; --label-deep: #F2B705; --leaf: #1E7A55;
+          --display: "Readex Pro", "Segoe UI", system-ui, sans-serif; --body: "Figtree", "Segoe UI", system-ui, sans-serif; }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--deep); color: var(--text); font: 16px/1.7 "Segoe UI", Arial, sans-serif; }
-  a { color: var(--blue); }
-  header { border-bottom: 1px solid var(--line); }
-  header div, main, footer div { max-width: 780px; margin: 0 auto; padding: 0 20px; }
-  header div { display: flex; align-items: center; height: 72px; }
-  .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 18px; color: var(--text); text-decoration: none; }
-  .brand img { width: 36px; height: 36px; border-radius: 8px; }
-  main { padding-top: 40px; padding-bottom: 40px; }
-  h1 { font-size: 34px; margin: 0 0 4px; }
-  .date { color: var(--muted); margin: 0 0 28px; }
-  h2 { font-size: 20px; margin: 32px 0 8px; }
-  p, li { color: #CBD5E1; }
-  ul { padding-left: 20px; }
-  footer { border-top: 1px solid var(--line); padding: 24px 0 36px; color: var(--muted); font-size: 14px; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.65 var(--body); -webkit-font-smoothing: antialiased; }
+  a { color: var(--leaf); text-underline-offset: 3px; }
+  :focus-visible { outline: 3px solid var(--leaf); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding-inline: 24px; }
+  header { position: sticky; top: 0; z-index: 30; background: rgba(244, 247, 245, .92); backdrop-filter: blur(10px);
+           border-bottom: 1px solid var(--mist); }
+  header .wrap { display: flex; align-items: center; height: 70px; gap: 28px; }
+  .brand { display: flex; align-items: center; gap: 10px; font: 700 20px var(--display); color: var(--ink); text-decoration: none; margin-right: auto; }
+  .brand img { width: 36px; height: 36px; border-radius: 10px; }
+  .tagbtn { position: relative; display: inline-flex; align-items: center; font: 700 14.5px/1 var(--body); color: var(--ink);
+            background: var(--label); text-decoration: none; padding: 11px 18px 11px 32px; border-radius: 6px 12px 12px 6px;
+            clip-path: polygon(12px 0, 100% 0, 100% 100%, 12px 100%, 0 50%); }
+  .tagbtn::before { content: ""; position: absolute; left: 13px; top: 50%; width: 7px; height: 7px; margin-top: -3.5px;
+                    border-radius: 50%; background: var(--paper); }
+  .tagbtn:hover { background: var(--label-deep); }
+  .page { display: grid; grid-template-columns: 240px 1fr; gap: 64px; padding-block: 64px 90px; }
+  .toc { position: sticky; top: 100px; align-self: start; font-size: 15px; }
+  .toc b { display: block; font: 600 15px var(--display); margin-bottom: 10px; }
+  .toc a { display: block; color: var(--ink-2); text-decoration: none; padding: 5px 0 5px 14px; border-left: 2px solid var(--mist); }
+  .toc a:hover { color: var(--ink); border-left-color: var(--ink); }
+  article { max-width: 720px; }
+  h1 { font: 700 clamp(38px, 5vw, 56px)/1.05 var(--display); letter-spacing: -1.6px; margin: 0 0 14px; }
+  .updated { display: inline-block; background: var(--label); font-weight: 600; font-size: 14.5px; border-radius: 6px; padding: 3px 10px; margin-bottom: 22px; }
+  .intro { font-size: 19px; color: var(--ink-2); margin: 0 0 12px; }
+  h2 { font: 600 25px/1.2 var(--display); letter-spacing: -.4px; margin: 48px 0 12px; padding-top: 22px; border-top: 2px solid var(--ink); scroll-margin-top: 90px; }
+  p { margin: 0 0 14px; color: var(--ink-2); }
+  ul { margin: 0 0 14px; padding: 0; list-style: none; }
+  li { position: relative; padding: 6px 0 6px 26px; color: var(--ink-2); }
+  li::before { content: ""; position: absolute; left: 2px; top: 17px; width: 10px; height: 10px; border-radius: 3px; background: var(--label);
+               box-shadow: inset 0 0 0 1.5px var(--ink); }
+  li b, p b { color: var(--ink); }
+  .box { background: var(--white); border: 1px solid var(--mist); border-radius: 14px; padding: 18px 22px; margin: 18px 0; }
+  .box p:last-child { margin: 0; }
+  footer { background: var(--ink); color: #B8CBC3; font-size: 15px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding-block: 30px; }
+  footer a { color: #E6EFEA; }
+  @media (max-width: 860px) { .page { grid-template-columns: 1fr; gap: 24px; padding-top: 40px; } .toc { position: static; } }
+  @media (max-width: 600px) { .wrap { padding-inline: 18px; } header .tagbtn { display: none; } }
 </style>
 </head>
 <body>
-<header><div><a class="brand" href="index.html"><img src="logo.png" alt="">Scraper Tool</a></div></header>
+<header>
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="logo.png" alt="">Scraper Tool</a>
+    <a class="tagbtn" href="index.html#download">Download free</a>
+  </div>
+</header>
+<main class="wrap page">
+  <nav class="toc" aria-label="On this page"><b>On this page</b><a href="#download">What you may download</a><a href="#browser">The browser button</a><a href="#account">Your account</a><a href="#credits">Plans, credits and payments</a><a href="#watch">Watching shops and alerts</a><a href="#service">The service</a><a href="#changes">Changes and contact</a></nav>
+  <article>
+    <h1>Terms of use</h1>
+    <span class="updated">Updated 1 November 2026 - for Scraper Tool 5.0</span>
+    <p class="intro">By using Scraper Tool you agree to these terms. They are short - please read them.</p>
+    <h2 id="download">What you may download</h2>
+    <ul>
+      <li>Use Scraper Tool only for content you are allowed to use - for example your own shop, your supplier's
+          catalogue that you resell, or public information for your own market research.</li>
+      <li>Pictures, texts and product data belong to their owners. Downloading them does not give you the right to
+          publish or sell them. Ask the owner when in doubt.</li>
+      <li>Respect each website's terms and its limits. Scraper Tool reads shops at a calm pace and waits when a shop asks
+          it to - do not try to get around that.</li>
+      <li>Do not use Scraper Tool to collect personal data about people, or for anything against the law.</li>
+    </ul>
 
-<main>
-  <h1>Terms of use</h1>
-  <p class="date">Updated 1 November 2026 &middot; for Scraper Tool 4.x</p>
-  <p>By using Scraper Tool you agree to these terms. Please read them - they are short.</p>
+    <h2 id="browser">The browser button</h2>
+    <ul>
+      <li>Read only shops you are allowed to use, in your own browser, as a normal visitor would see them.</li>
+      <li>Do not use it to get past logins, paywalls or other protections, or to read pages that are not meant for the public.</li>
+      <li>Keep its pace as it is; do not run it on many tabs at once against the same shop.</li>
+    </ul>
 
-  <h2>1. What you may download</h2>
-  <ul>
-    <li>Use Scraper Tool only for content you are allowed to use - for example your own shop, your supplier's
-        catalogue that you resell, or public information for your own market research.</li>
-    <li>Pictures, texts and product data belong to their owners. Downloading them does not give you the right to
-        publish or sell them. Ask the owner when in doubt.</li>
-    <li>Respect each website's terms and its limits. Scraper Tool reads shops slowly and waits when a shop asks it
-        to - do not try to get around that.</li>
-    <li>Do not use Scraper Tool to collect personal data about people, or for anything against the law.</li>
-  </ul>
+    <h2 id="account">Your account</h2>
+    <ul>
+      <li>Keep your password secret. You are responsible for what is done with your account.</li>
+      <li>One account per person. Do not share an account or sell access to it.</li>
+      <li>We may block an account that breaks these terms, tries to misuse the service or harms others.</li>
+    </ul>
 
-  <h2>2. Your account</h2>
-  <ul>
-    <li>Keep your password secret. You are responsible for what is done with your account.</li>
-    <li>One account per person. Do not share an account or sell access to it.</li>
-    <li>We may block an account that breaks these terms, tries to misuse the service or harms others.</li>
-  </ul>
+    <h2 id="credits">Plans, credits and payments</h2>
+    <ul>
+      <li>Downloads use credits: 1 product in your product list = 1 credit, 1 picture = 1 credit. What you already saved
+          costs nothing again. Credits refill every Saturday; unused weekly credits do not carry over.</li>
+      <li>Bonus credits (from invites or given by us) do not expire, cannot be exchanged for money and cannot be moved
+          to another account.</li>
+      <li>"No limit" on Pro means fair use: up to 150,000 credits a week, to keep the service working for everyone.</li>
+      <li>Payments are confirmed by a person; your plan starts when the payment is confirmed.</li>
+      <li>The 7-day trial is once per person. Making accounts to get trials or invite rewards again is not allowed.</li>
+    </ul>
 
-  <h2>3. Plans, credits and payments</h2>
-  <ul>
-    <li>Downloads use credits: 1 product in your product list = 1 credit, 1 picture = 1 credit. What you already
-        saved costs nothing again. Credits refill every Saturday; unused weekly credits do not carry over.</li>
-    <li>Bonus credits (from invites or given by us) do not expire, cannot be exchanged for money and cannot be moved
-        to another account.</li>
-    <li>"No limit" on Pro means fair use: up to 150,000 credits a week, to keep the service working for everyone.</li>
-    <li>Payments are confirmed by a person; your plan starts when the payment is confirmed. Questions about a
-        payment: <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a>.</li>
-    <li>The 7-day trial is once per person. Making accounts to get trials or invite rewards again is not allowed.</li>
-  </ul>
+    <h2 id="watch">Watching shops and alerts</h2>
+    <p>Watched shops are checked on a schedule, as well as the shops allow it. Prices and stock are shown as the shop
+       showed them at the time of the check; always confirm on the shop before you buy or sell.</p>
 
-  <h2>4. Watching shops and alerts</h2>
-  <p>Watched shops are checked on a schedule, as well as the shops allow it. Prices and stock are shown as the shop
-     showed them at the time of the check; always confirm on the shop before you buy or sell.</p>
+    <h2 id="service">The service</h2>
+    <p>We work to keep Scraper Tool running and correct, but it is provided as it is: websites change, and a shop may
+       block automatic downloads at any time. We are not responsible for lost profit or for how you use what you
+       download. Keep your own copies of important files.</p>
 
-  <h2>5. The service</h2>
-  <p>We work to keep Scraper Tool running and correct, but it is provided as it is: websites change, and a shop may
-     block automatic downloads at any time. We are not responsible for lost profit or for how you use what you
-     download. Keep your own copies of important files.</p>
+    <h2 id="changes">Changes and contact</h2>
+    <p>We may change these terms or the plans. Important changes are announced in the app before they apply.
+       Questions: <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a>.</p>
 
-  <h2>6. Changes</h2>
-  <p>We may change these terms or the plans. Important changes are announced in the app before they apply.</p>
-
-  <h2>Contact</h2>
-  <p><a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a></p>
+  </article>
 </main>
-
-<footer><div>&copy; 2026 Scraper Tool &nbsp;&middot;&nbsp; <a href="index.html">Home</a> &nbsp;&middot;&nbsp;
-  <a href="privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="terms.html">Terms</a></div></footer>
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 Scraper Tool</span>
+    <span><a href="index.html">Home</a> &nbsp;&nbsp; <a href="privacy.html">Privacy policy</a> &nbsp;&nbsp; <a href="terms.html">Terms of use</a> &nbsp;&nbsp; <a href="mailto:osmanarap83@gmail.com">osmanarap83@gmail.com</a></span>
+  </div>
+</footer>
 </body>
 </html>
